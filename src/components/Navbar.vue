@@ -121,9 +121,21 @@ export default{
 					}
 				}
 			}
+		},
+		barlistVisit(){
+				let that = this
+				if(this.barlistVisit){
+					window.addEventListener("click",this.eventclick)
+				}
 		}
 	},
 	methods:{
+		eventclick(e){
+			if(e.isTrusted){
+				this.barlistVisit = false
+			}
+			window.removeEventListener("click",this.eventclick)
+		},
 		additem(rootid,secid,thrid,name,title){
 			let tmp = {}
 			tmp.rootid = rootid,
@@ -152,6 +164,7 @@ export default{
 			},100)
 			this.visited = this.$storage.get("visited")
 			this.barlistVisit = !this.barlistVisit;
+			window.removeEventListener("click",this.eventclick)
 		},
 		autoclick(rootid,secid,thrid){
 			this.$store.commit('setclickStatus');
@@ -166,7 +179,8 @@ export default{
 		},
 		openVisited(rootid,secid,thrid){
 			this.autoclick(rootid,secid,thrid)
-			this.changeBarlistVisit()
+			this.barlistVisit = !this.barlistVisit;
+			window.removeEventListener("click",this.eventclick)
 		},
 		clearVisited(){
 			if(this.visited.length>0){
@@ -193,6 +207,7 @@ export default{
 	mounted:function(){
 		console.log(this.$storage.get("visited"))
 		$("#funseach").focus();
+
 	}
 }	
 </script>

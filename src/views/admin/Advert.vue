@@ -603,7 +603,6 @@ export default {
     },
     handleScroll(){
       var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-      console.log(scrollTop);
       if (scrollTop>157) {
         this.scrollth = true;
       }else{
@@ -618,7 +617,7 @@ export default {
       $("#searchp").focus();
   },
   destroyed () {//离开该页面需要移除这个监听的事件
-  window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>

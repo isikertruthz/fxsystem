@@ -5,7 +5,7 @@
     <div class="subsidebar-top">{{location}}</div>
     <div class="hiddenbar" @click='changestatus()'><span class="fa fa-angle-double-left"></span></div>
     <ul>
-      <div v-for='item in this.subSidebarList' :id="'secCate' + item.id" class="link-to" @click='changeindex(item.id,item.subItems)' :key="item.id">
+      <div v-for='item in this.subSidebarList' :id="'secCate' + item.id" class="link-to sec-cate" @click='changeindex(item.id,item.subItems)' :key="item.id">
         <span class="fa pad-rig " :class="item.id==dqindex?item.subItems.length>0?'fa-caret-down':'':item.subItems.length>0?'fa-caret-right':''">
           </span>{{item.name}}
         <!-- 二级列表 -->

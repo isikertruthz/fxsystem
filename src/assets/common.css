@@ -208,16 +208,15 @@ ul,li,a{
 .login-logo{
 	height: 100%;
 	width: 50%;
-	display: inline-block;
-	background-color: #00c7bd;
+  background-color: #00c7bd;
 	float: left;
 	color: white
 }
 .login{
 	height: 100%;
 	width: 50%;
-	display: inline-block;
-	background-color: white;
+  background-color: white;
+  display: block;
 	float: left;
 }
 .input-width{
@@ -308,7 +307,6 @@ ul,li,a{
 	color: #555;
 }
 .to-home{
-	display: inline-block;
 	font-size: 18px;
 	line-height: 50px;
 	width: 55px;
@@ -317,11 +315,10 @@ ul,li,a{
 	border-right: 1px solid rgba(0,0,0,0.1);
 }
 .to-login{
-	display: inline-block;
 	font-size: 18px;
 	line-height: 50px;
 	width: 55px;
-	float:right;
+  float:right;
 	border-left: 1px solid rgba(0,0,0,0.1);
 	color: #aaa;
 }
@@ -523,13 +520,14 @@ ul,li,a{
 }
 .link-to{
   display: inline-block;
-  height: 40px;
+  height: 43px;
   width: 100%;
-  line-height: 40px;
+  line-height: 43px;
   color: #666;
   cursor: pointer;
   padding-left:15px;
 }
+
 .pad-rig{
   padding-right: 10px;
 }
@@ -778,7 +776,7 @@ top:-180px; left:12px;
 
 .barlist{
   position:absolute;
-  top:50px;
+  top:55px;
   left: 15px;
   height: 400px;
   width: 850px;

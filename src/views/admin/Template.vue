@@ -54,3 +54,4 @@ export default {
     destroyed: function(){}
 }
 </script>
+

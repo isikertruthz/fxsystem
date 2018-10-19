@@ -1,11 +1,36 @@
 <template>
-	<div >
-		<transition name="slide-fade">
-		<div v-if="barvisit" class="messagebar">暂空
+	<div>
+		<transition name="flip-list">
+		<div v-if="barvisit" class="messagebar">
+			<div class="" style="text-align:center;height:40px;line-height:40px;font-size:11px;  border-bottom: 1px solid #efefef;background-color:#44abf7;color:#fffffa;">
+				<span class="fa fa-commenting-o sp-pad"></span><span>消息提醒</span>
+			</div>
+			<div class="messbaritem" style="position:relative">
+				<span class="fa fa-calendar-minus-o pad-left-i"></span>
+				<span>订单消息</span>
+				<span class="fa fa-angle-down messbaritem-down"></span>
+			</div>
+			<div class="messbaritem">
+				<span class="fa fa-calendar-minus-o pad-left-i"></span>
+				<span>内部公告</span>
+				<span class="fa fa-angle-down messbaritem-down"></span>
+			</div>
+			<div class="messbaritem">
+				<span class="fa fa-calendar-minus-o pad-left-i"></span>
+				<span>佣金提现</span>
+				<span class="fa fa-angle-down messbaritem-down"></span>
+			</div>
+			<div class="messbaritem">
+				<span class="fa fa-calendar-minus-o pad-left-i"></span>
+				<span>评价</span>
+				<span class="fa fa-angle-down messbaritem-down"></span>
+			</div>
+			
 			<div class="btn-change" @click='changestatus()'><span class="fa fa-angle-double-right sp-pad"></span>收起面板</div>
 		</div>
 		</transition>
-		<transition name="slide-fade">
+		<transition name="flip">
+		<!-- <transition name="slide-fade"> -->
 		<div class="visit-bar" v-if="!barvisit" @click='changestatus()'><span class="fa fa-commenting-o sp-pad"></span>消息提醒</div>
 		</transition>
 	</div>
@@ -28,52 +53,3 @@
 		}
 	}
 </script>
-
-<style type="text/css">
-.messagebar{
-	height: calc(100% - 50px);
-	width: 135px;
-	background-color: white;
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	border-left: 1px solid rgba(0,0,0,0.1);
-}
-.btn-change{
-	position: absolute;
-	width: 100%;
-	height: 35px;
-	bottom: 0;
-	background-color: #F0AD4E;
-	color: white;
-	line-height: 35px;
-	cursor: pointer;
-	font-size: 12px;
-}
-.sp-pad{
-	padding-right: 5px;
-}
-.visit-bar{
-	position: fixed;
-	width: 100px;
-	height: 35px;
-	bottom: 0;
-	right: 25px;
-	background-color: #44ABF7;
-	color: white;
-	line-height:35px;
-	cursor: pointer;
-	font-size: 12px;
-}
-.slide-fade-enter-active {
-  transition: all .1s ease;
-}
-.slide-fade-leave-active {
-  transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active for below version 2.1.8 */ {
-  transform: translateY(-10px);
-  opacity: 0;
-}
-</style>

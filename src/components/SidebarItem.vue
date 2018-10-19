@@ -1,14 +1,17 @@
 <template>
-	<div class="sidebar-item">
-		<div class="sidebar-top"><span class="fa fa-bars"></span></div>
-		<ul>
-			<li v-for="item in items" @click="changeLinkActive(item.id)"><router-link :to="{path: item.url}" class="link-width" :class="linkActive==item.id?'active':''"><span class="fa span-pad" :class="item.class"></span>{{item.name}}</router-link></li>
+	<div class="sidebar-item" :class="sidebarmax?'sidebar-left3':'sidebar-left2'">
+		<div class="sidebar-top"><span class="fa fa-bars" @click="handlesidebarmax" style="width:100%;"></span></div>
+		<ul >
+			<li v-for="item in items" :id="'sidebar'+item.id" @click="changeLinkActive(item.id,item.name)" :key="item.id" :title="item.name">
+				<router-link :to="{path: item.url}" class="link-width" :class="linkActive==item.id?'active':''"><span class="fa" :class="sidebarmax?'span-pad '+item.class:item.class"></span><span v-if="sidebarmax">{{item.name}}</span></router-link>
+			</li>
 		</ul>
 	</div>
 </template>
 
 <script type="text/javascript">
 import Bus from '@/assets/bus.js'
+import { mapState } from 'vuex';
 export default{
 	data(){
 		return {
@@ -16,38 +19,51 @@ export default{
 				{
 					id:"0",
 					name:"店铺",
-					url:"/",
+					url:"#",
 					root:[{
 			          id:"0",
 			          name:"首页",
 			          subItems:[{
 			            id:"0",
 			            name:"幻灯片",
-			            url:'/'}],
+						url:'/admin/lanternslide',
+						table:"slide"},
+			            {
+			            id:"1",
+			            name:"导航图标",
+						url:'/admin/navigation',
+						table:"navicon"},
+			            {
+			            id:"2",
+			            name:"广告",
+						url:'/admin/advert',
+						table:"advert"},
+			            {
+			            id:"3",
+			            name:"魔方推荐",
+						url:'/admin/lanternslide',
+						table:"slide"},
+						
+			            {
+			            id:"4",
+			            name:"商品推荐",
+						url:'/admin/lanternslide',
+						table:"slide"},
+			            {
+			            id:"5",
+			            name:"排版设置",
+			            url:'/admin/lanternslide',
+						table:"slide"},
+			            ],
 			          },{
 			          id:"1",
 			          name:"商城",
 			          subItems:[{
-			            id:"1",
+			            id:"6",
 			            name:"内容管理",
-			            url:'/dianpu'
-			          },{
-			            id:"2",
-			            name:"内容管理",
-			            url:'/'
-			          },{
-			            id:"3",
-			            name:"内容管理",
-			            url:'/dianpu'
-			          },{
-			            id:"4",
-			            name:"内容管理",
-			            url:'/'
+						url:'/admin/navigation',
+						table:"navicon"
 			          }]
-			          },{
-			          id:"2",
-			          name:"暂空",
-			          subItems:[]
 			          }
 			        ],
 					class:"fa-shopping-basket"
@@ -55,67 +71,62 @@ export default{
 				{	
 					id:"1",
 					name:"商品",
-					url:"/dianpu",
+					url:"#",
 					class:"fa-shopping-bag"
 				},
 				{	
 					id:"2",
 					name:"会员",
-					url:"/dianpu",
+					url:"#",
 					class:"fa-user-circle"
 				},
 				{	
 					id:"3",
 					name:"订单",
-					url:"/dianpu",
+					url:"#",
 					class:"fa-file-text-o"
 				},
 				{	
 					id:"4",
 					name:"门店",
-					url:"/dianpu",
+					url:"#",
 					class:"fa-trophy"
 				},
 				{	
 					id:"5",
 					name:"营销",
-					url:"/dianpu",
+					url:"#",
 					class:"fa-gift"
 				},
 				{	
 					id:"6",
 					name:"财务",
-					url:"/dianpu",
+					url:"#",
 					class:"fa-money"
 				},
 				{	
 					id:"7",
 					name:"数据",
-					url:"/dianpu",
+					url:"#",
 					class:"fa-line-chart"
 				},
 				{	
 					id:"8",
 					name:"小程序",
-					url:"/dianpu",
+					url:"#",
 					class:"fa-weixin color-green"
 				},
 				{	
 					id:"9",
 					name:"应用",
-					url:"/dianpu",
+					url:"#",
 					class:"fa-html5 color-c"
 				},
 				{	
 					id:"10",
 					name:"设置",
-					url:"/dianpu",
+					url:"#",
 					class:"fa-cog"
-				},
-				{	
-					id:"11",
-					name:"暂空",
-					url:"/dianpu",
 				}
 			],
 			linkActive : "0",
@@ -125,80 +136,46 @@ export default{
 	// created(){
 	//  	console.log(items)
 	// }
+	computed:{
+		...mapState({
+			sidebarmax : state => state.status.sidebarmax
+		})
+	},
 	methods:{
-		changeLinkActive(key){
+		changeLinkActive(key,name,){
 			// this.$forceUpdate()
 			// this.$set(this.linkActive,key)
 			// console.log(key)
-			this.$store.commit('subSidebarVisit')
-			this.linkActive = key
+			let that = this
+			that.$store.commit('subSidebarVisit')
+			that.$store.commit('subbsidebarLocation',name)
+			that.$store.commit('haddleLocationID',key)
+			that.linkActive = key
 			let list = []
-			this.items.forEach(function(item){
+			that.items.forEach(function(item){
 				if(item.id==key){
 					list = item.root
 				}
 			})
+			// console.log(this.$store.state.status.subSidebarList)
 			// console.log(list)
-			Bus.$emit('list',list)
+			that.$store.commit('subbsidebarList',list)
+			if(list != null){
+				that.$store.commit('subSidebardef',list[0].subItems)
+			}
+			// console.log(this.$store.state.status.clickStatus)
 			// console.log(Bus)
+		},
+		handlesidebarmax(){
+			this.$storage.set("sidebarmax",!this.sidebarmax)
+			this.$store.commit("handlesidebarmax")
+		}
+	},
+	mounted: function(){
+		this.$storage.set("menuList",this.items)		// this.$storage.set("visited",visited)
+		if(this.$storage.get("sidebarmax")!=null){
+			this.$store.commit("setsidebarmax",this.$storage.get("sidebarmax"))
 		}
 	}
 }
 </script>
-
-<style type="text/css">
-ul,li,a{
-	text-decoration: none;
-	list-style-type: none;
-	margin: 0;
-	padding:0;
-}
-.sidebar-item a:focus{
-	text-decoration: none;
-	color: white;
-}
-.sidebar-item a:hover{
-	text-decoration: none;
-	color: white;
-}
-
-.sidebar-item{
-	padding-top: 50px;
-	/*height: 550px;*/
-}
-.sidebar-item ul{
-	height: 590px;
-	overflow-y: scroll;
-	overflow-x: hidden;
-}
-.link-width{
-	display: inline-block;
-	width: 120px;
-	height: 50px;
-	line-height: 50px;
-	color: #CACACA;
-}
-.span-pad{
-	padding-right: 13px;
-}
-.active{
-	color: white;
-	border-left: 3px solid #00AEFF;
-	background-color:#19222E;
-}
-.sidebar-top{
-	height: 30px;
-	width: 100%;
-	background-color: #28394A;
-	line-height: 30px;
-	font-size:12px;
-	color: #7C838A;
-	cursor: pointer;
-}
-.color-green{
-	color: #09BB07;
-}
-.color-c{
-	color: #EA6111;
-}
-</style>

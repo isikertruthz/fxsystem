@@ -502,6 +502,7 @@ export default {
         case "11107":
           if (this.keyword != null) {
             this.$http.get("api/main.php?ywtype="+ywtype+"&keyword="+this.keyword+"&type="+this.selectStatus+"&tb="+this.table).then(response=>{
+            //   debugger
               this.list = response.data 
             })
           }

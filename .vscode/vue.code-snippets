@@ -1,0 +1,69 @@
+{
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	"Print to console": {
+		"prefix": "template",
+		"body": [
+			"<template>",
+			"\t<div>",
+				"\t\t<!-- adjust 适应框架宽度 -->",
+				"\t\t<div class=\"comm-view\" :class=\"commLay==240?messagebarVisit?'pad-lefta pad-right':'pad-lefta':commLay==130?messagebarVisit?'pad-leftb pad-right':'pad-leftb':commLay==170?messagebarVisit?'pad-leftc pad-right':'pad-leftc':commLay==60?messagebarVisit?'pad-leftd pad-right':'pad-leftd':''\">",
+					"\t\t\t<div class=\"dp-location\"> <!-- location -->",
+						"\t\t\t\t<span class=\"loc-bor\">当前位置：",
+							"\t\t\t\t\t<label class=\"page-location\">{{pageLoction}}管理</label>",
+						"\t\t\t\t</span>",
+					"\t\t\t</div> <!-- location End -->",
+					"\t\t\t<div class=\"content\" > ",
+						"\t\t\t\t<div class=\"content-top\">",
+                            "\t\t\t\t\t${0:<!-- Coding here -->}",
+						"\t\t\t\t</div>",
+					"\t\t\t</div>",
+				"\t\t</div> <!-- adjust End  -->",
+			"\t</div>",
+		"</template>",
+		"",
+		"<script>",
+		"/**",
+		" * Coded By ${1:name} ",
+		" * on ${2:date}",
+		" */",
+		"import { mapState } from 'vuex';",
+		"export default {",
+			"\tdata() {",
+				"\t\treturn {}",
+			"\t},",
+			"\tcomputed: {",
+				"\t\t...mapState({",
+					"\t\t\tpageLoction : state => state.status.pageLoction,",
+					"\t\t\tmessagebarVisit : state => state.status.messagebarVisit,",
+					"\t\t\tsidebarmax : state => state.status.sidebarmax,",
+					"\t\t\tsubSidebarVisit : state => state.status.subSidebarVisit",
+				"\t\t}),",
+				"\t\tcommLay(){",
+					"\t\t\tif(this.sidebarmax && this.subSidebarVisit){",
+						"\t\t\t\treturn 240",
+					"\t\t\t}else if(this.sidebarmax && !this.subSidebarVisit){",
+						"\t\t\t\treturn 130",
+					"\t\t\t}else if(!this.sidebarmax && this.subSidebarVisit){",
+						"\t\t\t\treturn 170",
+					"\t\t\t}else{",
+						"\t\t\t\treturn 60",
+					"\t\t\t}",
+				"\t\t}",
+			"\t},",
+			"\twatch: {},",
+			"\tmethods: {},",
+			"\t/* event listeners code in mounted function*/",
+			"\tmounted: function(){},",
+			"\tdestroyed: function(){}",
+		"}",
+		"</script>"
+		],
+		"description": "template for admin views"
+	}
+}

@@ -41,173 +41,177 @@
 </template>
 
 <script type="text/javascript">
-import { mapState } from 'vuex';
-export default{
-	data(){
-		return {
-			username:"企泰信息科技开发版",
-			search : "",
-			searchList : [],
-			barlistVisit : false,
-			selected : "-1",
-			contList : [],
-			visited : []
-		}
-	},
-	computed:{
-		user(){
-			return sessionStorage.getItem("user")
-		},
-		message(){
-			return "暂无 \" " + this.search + " \" 相关功能"
-		},
-		menuList(){
-			return this.$storage.get('menuList')
-		},
-		...mapState({
-			sidebarmax : state => state.status.sidebarmax
-		})
-
-	},
-	watch:{
-		search(newval,oldval){
-			let obj = {}
-			if(newval!=''){
-				for(var item of this.$storage.get('menuList')){
-					if(item.root){
-						for(var secItem of item.root){
-							if(secItem.subItems){
-								for(var thrItem of secItem.subItems){
-									if(thrItem.name.search(newval.replace(/\s+/g,""))==0){
-										obj.root = item.name
-										obj.rootid = item.id
-										obj.secCate = secItem.name
-										obj.secid = secItem.id
-										obj.name = thrItem.name
-										obj.thrid = thrItem.id
-										obj.url = thrItem.url
-										let isadd = true
-										for(var serachitem of this.searchList){
-											if(obj.name == serachitem.name){
-												isadd = false
-											}
-										}
-										if(isadd){
-											this.searchList.push(obj)
-										}
-										break;
-									}
-								}
-							}
-						}
-					}
-				}
-			}else{
-				this.searchList = []
-			}
-		},
-		selected(id){
-			this.contList = []
-			// console.log(this.menuList)
-			for(var item of this.menuList){
-				if (item.id==id && item.root) {
-					for(var subitem of item.root){
-						if(subitem.subItems){
-							for(var contitem of subitem.subItems){
-								// console.log(contitem)
-								this.additem(item.id,subitem.id,contitem.id,contitem.name,item.name + " > " +subitem.name)
-							}
-						}			
-					}
-				}
-			}
-		},
-		barlistVisit(){
-				let that = this
-				if(this.barlistVisit){
-					window.addEventListener("click",this.eventclick)
-				}
-		}
-	},
-	methods:{
-		eventclick(e){
-			if(e.isTrusted){
-				this.barlistVisit = false
-			}
-			window.removeEventListener("click",this.eventclick)
-		},
-		additem(rootid,secid,thrid,name,title){
-			let tmp = {}
-			tmp.rootid = rootid,
-			tmp.secid = secid,
-			tmp.thrid = thrid,
-			tmp.name = name,
-			tmp.title = title
-			this.contList.push(tmp)
-		},
-		changestatus(){
-			this.$store.commit('subSidebarHiden')
-			this.$store.commit('subbsidebarLocation',"")
-			$("#funseach").focus();
-		},
-		logout(){
-			this.$router.replace({path:"/"})
-		},
-		routerTo(url,rootid,secid,thrid){
-			this.autoclick(rootid,secid,thrid)
-			this.search = ""
-			this.searchList = []
-		},
-		changeBarlistVisit(){
-			setTimeout(function(){
-				$("#curindex0").click();
-			},100)
-			this.visited = this.$storage.get("visited")
-			this.barlistVisit = !this.barlistVisit;
-			window.removeEventListener("click",this.eventclick)
-		},
-		autoclick(rootid,secid,thrid){
-			this.$store.commit('setclickStatus');
-			$("#sidebar"+rootid).click();
-			setTimeout(function(){
-				$("#secCate"+secid).click();
-			},300);
-			setTimeout(function(){
-				$("#thrCate"+thrid).click();
-				console.log(rootid+secid+thrid)
-			},500);
-		},
-		openVisited(rootid,secid,thrid){
-			this.autoclick(rootid,secid,thrid)
-			this.barlistVisit = !this.barlistVisit;
-			window.removeEventListener("click",this.eventclick)
-		},
-		clearVisited(){
-			if(this.visited.length>0){
-				let visited = []
-				this.visited = visited
-				this.$storage.set("visited",visited)
-			}
-		},
-		baritemSelected(id){
-			this.selected = id
-		},
-		delCurItem(id){
-			for(var index in this.visited){
-				if(this.visited[index].thrID == id){
-					this.visited.splice(index,1)
-				}
-			}
-			this.$storage.set("visited",this.visited)
-		},
-		exit(){
-			$("#exit").click();
-		}
-	},
-	mounted:function(){
-		console.log(this.$storage.get("visited"))
-		$("#funseach").focus();
-
-	}
-}	
+import { mapState } from "vuex";
+export default {
+    data() {
+        return {
+        username: "企泰信息科技开发版",
+        search: "",
+        searchList: [],
+        barlistVisit: false,
+        selected: "-1",
+        contList: [],
+        visited: []
+        };
+    },
+    computed: {
+        user() {
+        return sessionStorage.getItem("user");
+        },
+        message() {
+        return '暂无 " ' + this.search + ' " 相关功能';
+        },
+        menuList() {
+        return this.$storage.get("menuList");
+        },
+        ...mapState({
+        sidebarmax: state => state.status.sidebarmax
+        })
+    },
+    watch: {
+        search(newval, oldval) {
+        let obj = {};
+        if (newval != "") {
+            for (var item of this.$storage.get("menuList")) {
+            if (item.root) {
+                for (var secItem of item.root) {
+                if (secItem.subItems) {
+                    for (var thrItem of secItem.subItems) {
+                    if (thrItem.name.search(newval.replace(/\s+/g, "")) == 0) {
+                        obj.root = item.name;
+                        obj.rootid = item.id;
+                        obj.secCate = secItem.name;
+                        obj.secid = secItem.id;
+                        obj.name = thrItem.name;
+                        obj.thrid = thrItem.id;
+                        obj.url = thrItem.url;
+                        let isadd = true;
+                        for (var serachitem of this.searchList) {
+                        if (obj.name == serachitem.name) {
+                            isadd = false;
+                        }
+                        }
+                        if (isadd) {
+                        this.searchList.push(obj);
+                        }
+                        break;
+                    }
+                    }
+                }
+                }
+            }
+            }
+        } else {
+            this.searchList = [];
+        }
+        },
+        selected(id) {
+        this.contList = [];
+        // console.log(this.menuList)
+        for (var item of this.menuList) {
+            if (item.id == id && item.root) {
+            for (var subitem of item.root) {
+                if (subitem.subItems) {
+                for (var contitem of subitem.subItems) {
+                    // console.log(contitem)
+                    this.additem(
+                    item.id,
+                    subitem.id,
+                    contitem.id,
+                    contitem.name,
+                    item.name + " > " + subitem.name
+                    );
+                }
+                }
+            }
+            }
+        }
+        },
+        barlistVisit() {
+        let that = this;
+        if (this.barlistVisit) {
+            window.addEventListener("click", this.eventclick);
+        }
+        }
+    },
+    methods: {
+        eventclick(e) {
+        if (e.isTrusted) {
+            this.barlistVisit = false;
+        }
+        window.removeEventListener("click", this.eventclick);
+        },
+        additem(rootid, secid, thrid, name, title) {
+        let tmp = {};
+        (tmp.rootid = rootid),
+            (tmp.secid = secid),
+            (tmp.thrid = thrid),
+            (tmp.name = name),
+            (tmp.title = title);
+        this.contList.push(tmp);
+        },
+        changestatus() {
+        this.$store.commit("subSidebarHiden");
+        this.$store.commit("subbsidebarLocation", "");
+        $("#funseach").focus();
+        },
+        logout() {
+        this.$router.replace({ path: "/" });
+        },
+        routerTo(url, rootid, secid, thrid) {
+        this.autoclick(rootid, secid, thrid);
+        this.search = "";
+        this.searchList = [];
+        },
+        changeBarlistVisit() {
+        setTimeout(function() {
+            $("#curindex0").click();
+        }, 100);
+        this.visited = this.$storage.get("visited");
+        this.barlistVisit = !this.barlistVisit;
+        window.removeEventListener("click", this.eventclick);
+        },
+        autoclick(rootid, secid, thrid) {
+        this.$store.commit("setclickStatus");
+        $("#sidebar" + rootid).click();
+        setTimeout(function() {
+            $("#secCate" + secid).click();
+        }, 300);
+        setTimeout(function() {
+            $("#thrCate" + thrid).click();
+            console.log(rootid + secid + thrid);
+        }, 500);
+        },
+        openVisited(rootid, secid, thrid) {
+        this.autoclick(rootid, secid, thrid);
+        this.barlistVisit = !this.barlistVisit;
+        window.removeEventListener("click", this.eventclick);
+        },
+        clearVisited() {
+        if (this.visited.length > 0) {
+            let visited = [];
+            this.visited = visited;
+            this.$storage.set("visited", visited);
+        }
+        },
+        baritemSelected(id) {
+        this.selected = id;
+        },
+        delCurItem(id) {
+        for (var index in this.visited) {
+            if (this.visited[index].thrID == id) {
+            this.visited.splice(index, 1);
+            }
+        }
+        this.$storage.set("visited", this.visited);
+        },
+        exit() {
+        $("#exit").click();
+        }
+    },
+    mounted: function() {
+        console.log(this.$storage.get("visited"));
+        $("#funseach").focus();
+    }
+};
 </script>

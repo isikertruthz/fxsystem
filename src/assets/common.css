@@ -62,7 +62,7 @@ a {
     background-color: white;
     width: calc(100% - 50px);
     margin: 0 25px;
-    min-height: 560px;
+    /* min-height: 560px; */
     padding-bottom: 30px;
 }
 
@@ -971,4 +971,8 @@ h5 {
     top: 50%;
     transform: translatey(-70%);
     right: 10px;
+}
+
+.compsearch:hover{
+    border: 2px dashed #44ABF7;
 }

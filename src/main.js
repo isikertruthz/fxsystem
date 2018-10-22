@@ -8,6 +8,7 @@ import store from '@/store'  //状态处理,组件通信
 import axios from 'axios'	//异步请求，后台通信
 
 import $ from 'jquery'
+import '@/assets/jquery-ui-1.12.1/jquery-ui.min.js'
 import '@/assets/bootstrap/css/bootstrap.min.css'  //bootstrap框架
 import '@/assets/bootstrap/js/bootstrap.min.js'
 import '@/assets/font-awesome-4.7.0/css/font-awesome.css'  //图标库

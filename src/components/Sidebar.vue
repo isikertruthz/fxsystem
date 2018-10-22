@@ -53,7 +53,7 @@ export default{
 			            id:"5",
 			            name:"排版设置",
 			            url:'/admin/composition',
-						table:"slide"},
+						table:"composition"},
 			            ],
 			          },{
 			          id:"1",

@@ -41,13 +41,13 @@ export default{
 			            {
 			            id:"3",
 			            name:"魔方推荐",
-						url:'/admin/template',
+						url:'/admin/cube',
 						table:"slide"},
 						
 			            {
 			            id:"4",
 			            name:"商品推荐",
-						url:'/admin/template',
+						url:'/admin/goodsrec',
 						table:"slide"},
 			            {
 			            id:"5",
@@ -60,10 +60,50 @@ export default{
 			          name:"商城",
 			          subItems:[{
 			            id:"6",
-			            name:"内容管理",
+			            name:"公告管理",
+						url:'/admin/notice',
+						table:""
+					  },
+					  {
+			            id:"7",
+			            name:"秒杀管理",
 						url:'/admin/template',
-						table:"navicon"
-			          }]
+						table:""
+					  },
+					  {
+			            id:"22",
+			            name:"付款管理",
+						url:'/admin/template',
+						table:""
+					  },
+					  {
+			            id:"8",
+			            name:"评论管理",
+						url:'/admin/template',
+						table:""
+					  },
+					  {
+			            id:"9",
+			            name:"退货管理",
+						url:'/admin/template',
+						table:""
+					  }]
+					  },
+					  {
+			          id:"2",
+			          name:"配送",
+			          subItems:[{
+			            id:"10",
+			            name:"普通快递",
+						url:'/admin/template',
+						table:""
+					  },
+					  {
+			            id:"11",
+			            name:"同城配送",
+						url:'/admin/template',
+						table:""
+					  }]
 			          }
 			        ],
 					class:"fa-shopping-basket"
@@ -72,7 +112,73 @@ export default{
 					id:"1",
 					name:"商品",
 					url:"#",
-					class:"fa-shopping-bag"
+					class:"fa-shopping-bag",
+					root:[{
+			          id:"3",
+			          name:"商品",
+			          subItems:[{
+			            id:"12",
+			            name:"出售中",
+						url:'/admin/template',
+						table:""},
+			            {
+			            id:"13",
+			            name:"已售罄",
+						url:'/admin/template',
+						table:""},
+			            {
+			            id:"14",
+			            name:"仓库中",
+						url:'/admin/template',
+						table:""},
+			            {
+			            id:"15",
+			            name:"回收站",
+						url:'/admin/template',
+						table:""
+						},						
+			            {
+			            id:"16",
+			            name:"待审核",
+						url:'/admin/template',
+						table:""},
+			            {
+			            id:"17",
+			            name:"商品分类",
+			            url:'/admin/template',
+						table:""
+						},
+						{
+			            id:"18",
+			            name:"商品组",
+			            url:'/admin/template',
+						table:""
+						},
+						{
+			            id:"19",
+			            name:"商品标签",
+			            url:'/admin/template',
+						table:""
+						},
+			            ],
+			          },{
+			          id:"4",
+			          name:"虚拟卡密",
+			          subItems:[{
+			            id:"20",
+			            name:"虚拟卡密",
+						url:'/admin/template',
+						table:""
+					  },
+					  {
+			            id:"21",
+			            name:"卡密分类",
+						url:'/admin/template',
+						table:""
+					  },
+					  ]},
+			        ]
+
 				},
 				{	
 					id:"2",
@@ -160,9 +266,9 @@ export default{
 			// console.log(this.$store.state.status.subSidebarList)
 			// console.log(list)
 			that.$store.commit('subbsidebarList',list)
-			if(list != null){
-				that.$store.commit('subSidebardef',list[0].subItems)
-			}
+			// if(list != null){
+			// 	that.$store.commit('subSidebardef',list[0].subItems)
+			// }
 			// console.log(this.$store.state.status.clickStatus)
 			// console.log(Bus)
 		},

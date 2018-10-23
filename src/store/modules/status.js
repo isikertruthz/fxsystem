@@ -6,8 +6,8 @@ const state = {
 	locationID : "",
 	subSidebarList : [],
 	subSidebardef :[],
-	curtable : "slide",
-	pageLoction: "幻灯片",
+	curtable : "",
+	pageLoction: "",
 	clickStatus : false,
 	sidebarmax : true
 }

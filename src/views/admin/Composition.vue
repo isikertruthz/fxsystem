@@ -9,7 +9,7 @@
             </div> <!-- location End -->
             <div class="content" > 
                 <div class="content-top">
-                    <ul style="padding-top:15px;font-size:12px;" id="compsearch" >
+                    <ul style="padding-top:28px;font-size:12px;" id="compsearch" >
                         <li class="compsearch" style="width:530px;padding:0 160px 0  100px;margin-left:30px;" v-for="item in list" :key="item.id" :id="item.id">
                             <div style="position:relative" >
                                 <img :src="'https://www.entertry.com/images/img/'+item.imgpath" alt="">

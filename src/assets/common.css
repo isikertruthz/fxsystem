@@ -597,9 +597,9 @@ a {
 
 .link-to {
     display: inline-block;
-    height: 43px;
+    height: 47px;
     width: 100%;
-    line-height: 43px;
+    line-height: 47px;
     color: #666;
     cursor: pointer;
     padding-left: 15px;
@@ -681,6 +681,7 @@ a {
     background-color: #5cb85c;
     border-color: #5cb85c;
 }
+
 
 .bt-success:focus,
 .bt-success.btn.focus {
@@ -975,4 +976,19 @@ h5 {
 
 .compsearch:hover{
     border: 2px dashed #44ABF7;
+}
+
+.cube-img{
+    height: 130px;
+    width:54%;
+}
+
+.padding-25{
+    padding: 25px 25px 0 25px;
+}
+
+.alert-primary {
+    color: #259fdc;
+    background-color: #d9edf7;
+    border-color: #c5dce7;
 }

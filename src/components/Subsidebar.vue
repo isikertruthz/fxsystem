@@ -10,7 +10,7 @@
           </span>{{item.name}}
         <!-- 二级列表 -->
         <ul @click.stop="">
-          <li v-for='subitem in subSidebardef' v-if='item.id==dqindex' :id="'thrCate'+ subitem.id" @click="changesubindex(subitem.id,subitem.table,subitem.name,subitem.url,locationID,item.id,subitem.name,item.name)" :key='subitem.id'><span   :class="subitem.id==subdqindex?'subactive':'color-77'" class="dis-inlblk">{{subitem.name}}</span></li>
+          <li v-for='subitem in subSidebardef' v-if='item.id==dqindex' :id="'thrCate'+ subitem.id" @click="changesubindex(subitem.id,subitem.table,subitem.name,subitem.url,locationID,item.id,subitem.name,item.name)" class="link-to1" :key='subitem.id'><span   :class="subitem.id==subdqindex?'subactive':'color-77'" class="dis-inlblk">{{subitem.name}}</span></li>
         </ul>
       </div>
     </ul>

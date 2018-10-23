@@ -13,6 +13,13 @@ import '@/assets/bootstrap/css/bootstrap.min.css'  //bootstrap框架
 import '@/assets/bootstrap/js/bootstrap.min.js'
 import '@/assets/font-awesome-4.7.0/css/font-awesome.css'  //图标库
 
+
+/* 富文本插件 */
+import '@/assets/ueditor/ueditor.config.js'
+import '@/assets/ueditor/ueditor.all.js'
+import '@/assets/ueditor/lang/zh-cn/zh-cn.js'
+import '@/assets/ueditor/ueditor.parse.js'
+
 import '@/assets/common.css' //公共样式
 import utils from '@/utils/utils.js'  //封装的类
 import storage from '@/utils/storage.js'  //封装的类

@@ -209,7 +209,7 @@
             </table>
             <hr class="mar-0">
             <div class="fun-hig" style="position:relative;">
-              <span v-if="listlen">
+              <span >
                 <input type="checkbox" class="allCheck" v-model="allCheck" id="allCheck" value="">
                 <button class="btn btn-success btn-xs bor-rad bt-success" @click='httpreq("11105","0")'>
                   <span class="fa fa-eye pad-rig-m"></span>显示
@@ -363,13 +363,6 @@ export default {
     listVis(){
       if ( this.list.length==0 ) { return true }
         else { return false }
-    },
-    listlen(){
-      if(this.list.length>10) {
-        return true
-      }else{
-        return false
-      }
     },
     subhiden(){
       return this.$store.state.status.subSidebarVisit

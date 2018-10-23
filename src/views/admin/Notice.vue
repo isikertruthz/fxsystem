@@ -9,9 +9,7 @@
             </div> <!-- location End -->
             <div class="content" > 
                 <div class="content-top">
-                    <div class="editor-container">
                     <UE :defaultMsg=defaultMsg :config=config ref="ue"></UE>
-                    </div>
                 </div>
             </div>
         </div> <!-- adjust End  -->

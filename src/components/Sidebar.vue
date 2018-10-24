@@ -62,7 +62,7 @@ export default{
 			            id:"6",
 			            name:"公告管理",
 						url:'/admin/notice',
-						table:""
+						table:"notice"
 					  },
 					  {
 			            id:"7",

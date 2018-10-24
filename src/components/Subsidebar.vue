@@ -29,7 +29,7 @@ import {mapState} from 'vuex'
 		data(){
 			return {
         subdqindex:"-1",
-        dqindex:"0"
+        dqindex:"-1"
         }
 			},
     methods:{

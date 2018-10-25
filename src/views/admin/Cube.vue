@@ -14,24 +14,24 @@
                         <div class="alert alert-primary bor-rad" style="margin: 10px 0;height:46px;padding:13px 15px;">提示：拖动改变位置，最多添加4个，请参照上图</div>
                         <table class="table" style="margin-bottom:10px;">
                             <thead>
-                                <tr>
+                                <tr style="border-bottom:1px solid #dddddd;">
                                     <th style="width:60px;border:none;">操作</th>
                                     <th style="border:none;">图片</th>
                                     <th style="border:none;">链接</th>
-                                    <th style="width: 60px;border:none;">操作</th>
+                                    <th style="width:60px;border:none;">操作</th>
                                 </tr>
                             </thead>
                             <tbody id="tbody" class="ui-sortable">
-							    <tr class="cube-item">
+							    <tr class="cube-item" v-for="(item,index) in list" :key="index">
 						            <td>
                                         <a href="javascript:;" class="btn btn-default btn-sm btn-move bor-rad"><i class="fa fa-arrows"></i></a>
                                     </td>
 						            <td>
 							                <div class="input-group img-item">
 								            <div class="input-group-addon" style="padding: 0 5px;background-color:white;border-radius: 0;">
-									            <img src="http://weifx.webqt.cn/attachment/images/2/2018/10/UvrRCrPF0BCPtUKHB8ob82B8424JkV.jpg" style="height:20px;width:20px" >
+									            <img :src="item.imgpath==''?'http://www.entertry.com/imgdef.png':'http://www.entertry.com/upload/'+item.imgpath" style="height:20px;width:20px" >
 								            </div>
-                                            <input type="text" class="form-control" name="" value="images/2/2018/10/UvrRCrPF0BCPtUKHB8ob82B8424JkV.jpg" style="height:34px;">
+                                            <input type="text" class="form-control" name="" :value="item.imgpath" style="height:34px;" disabled>
 											<div class="input-group-btn">
 										        <button type="button" class="btn btn-default btn-select-pic bor-rad">选择图片</button>
 									        </div>
@@ -39,75 +39,24 @@
 						            </td>
                                     <td>
                                         <div class="input-group form-group" style="margin: 0;">
-                                                <input type="text" value="" style="height:34px;" class="form-control valid" name="" placeholder="" >
+                                                <input type="text" v-model="item.url" style="height:34px;" class="form-control valid" name="" placeholder="">
                                                 <span class="input-group-btn ">
                                                     <span class="btn btn-default bor-rad">选择链接</span>
                                                 </span>
                                         </div>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-danger btn-sm bor-rad" @click="delitem()"><i class="fa fa-remove"></i></button>
+                                        <button type="button" class="btn btn-danger btn-sm bor-rad cub-delitem" @click="delitem(item.id)" :data-num="item.id" :id="item.id">
+                                            <i class="fa fa-remove"></i>
+                                        </button>
                                     </td>
                                 </tr>
-							    <tr class="cube-item">
-						            <td>
-                                        <a href="javascript:;" class="btn btn-default btn-sm btn-move bor-rad"><i class="fa fa-arrows"></i></a>
-                                    </td>
-						            <td>
-							                <div class="input-group img-item">
-								            <div class="input-group-addon" style="padding: 0 5px;background-color:white;border-radius: 0;">
-									            <img src="http://weifx.webqt.cn/attachment/images/2/2018/10/UvrRCrPF0BCPtUKHB8ob82B8424JkV.jpg" style="height:20px;width:20px" >
-								            </div>
-                                            <input type="text" class="form-control" name="" style="height:34px;" value="images/2/2018/10/UvrRCrPF0BCPtUKHB8ob82B8424JkV.jpg">
-											<div class="input-group-btn">
-										        <button type="button" class="btn btn-default btn-select-pic bor-rad">选择图片</button>
-									        </div>
-											</div>
-						            </td>
-                                    <td>
-                                        <div class="input-group form-group" style="margin: 0;">
-                                                <input type="text" value="" style="height:34px;" class="form-control valid" name="" placeholder="" >
-                                                <span class="input-group-btn ">
-                                                    <span class="btn btn-default bor-rad">选择链接</span>
-                                                </span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger btn-sm bor-rad" @click="delitem()"><i class="fa fa-remove"></i></button>
-                                    </td>
-                                </tr>
-							    <tr class="cube-item">
-						            <td>
-                                        <a href="javascript:;" class="btn btn-default btn-sm btn-move bor-rad"><i class="fa fa-arrows"></i></a>
-                                    </td>
-						            <td>
-							                <div class="input-group img-item">
-								            <div class="input-group-addon" style="padding: 0 5px;background-color:white;border-radius: 0;">
-									            <img src="http://weifx.webqt.cn/attachment/images/2/2018/10/UvrRCrPF0BCPtUKHB8ob82B8424JkV.jpg" style="height:20px;width:20px" >
-								            </div>
-                                            <input type="text" class="form-control" name="" style="height:34px;" value="images/2/2018/10/UvrRCrPF0BCPtUKHB8ob82B8424JkV.jpg">
-											<div class="input-group-btn">
-										        <button type="button" class="btn btn-default btn-select-pic bor-rad">选择图片</button>
-									        </div>
-											</div>
-						            </td>
-                                    <td>
-                                        <div class="input-group form-group" style="margin: 0;">
-                                                <input type="text" value="" style="height:34px;" class="form-control valid" name="" placeholder="" >
-                                                <span class="input-group-btn ">
-                                                    <span class="btn btn-default bor-rad">选择链接</span>
-                                                </span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger btn-sm bor-rad" @click="delitem()"><i class="fa fa-remove"></i></button>
-                                    </td>
-                                </tr>
+							    
 						    </tbody>
 					        </table>
                             <div>
                                 <button class="btn btn-primary btn-sm c-blue " style="background-color:#44abf7;height:28px;">保存</button>
-                                <button type="button" class="btn btn-sm btn-default bor-rad" onclick="addCube()"><i class="fa fa-plus"></i> 添加魔方</button>
+                                <button type="button" class="btn btn-sm btn-default bor-rad" @click="addlist()"><i class="fa fa-plus"></i> 添加魔方</button>
                             </div>
                     </div>
                 </div>
@@ -125,7 +74,16 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      url: "http://www.entertry.com/images/img/"
+      url: "http://www.entertry.com/images/img/",
+      list : [{
+          id : 0,
+          imgpath : "",
+          url :""
+      },{
+          id : 1,
+          imgpath : "",
+          url :""
+      }]
     };
   },
   computed: {
@@ -133,7 +91,7 @@ export default {
       pageLoction: state => state.status.pageLoction,
       messagebarVisit: state => state.status.messagebarVisit,
       sidebarmax: state => state.status.sidebarmax,
-      subSidebarVisit: state => state.status.subSidebarVisit
+      subSidebarVisit: state => state.status.subSidebarVisit,
     }),
     commLay() {
       if (this.sidebarmax && this.subSidebarVisit) {
@@ -148,15 +106,79 @@ export default {
     }
   },
   watch: {},
-  methods: {},
-  /* event listeners code in mounted function*/
-  mounted: function() {
-       var comp = $("#tbody")
-        comp.sortable(
-            { handle: "a" }
-        );
-        $("#tbody").disableSelection();
+  methods: {
+        httpreq(ywtype){
+            switch (ywtype) {
+                case "11301":
+                    this.$http.get("api/main.php?ywtype="+ywtype+"&tb="+this.table).then(response=>{
+                        // console.log(response)
+                        this.list = response.data
+                    })
+                    break;
+                case "11103":
+                    let id = arguments[1]
+                    this.$http.get("api/main.php?ywtype="+ywtype+"&tb="+this.table+"&id="+id).then(response=>{
+                        for(var index in this.list){
+                            if(this.list[index].id == id){
+                                this.list.splice(index,1)
+                            }
+                        }
+                        console.log(response)
+                    })
+                    break;
+                default:
+                    break;
+            }
+        },
+        //弹出操作状态
+        // 1操作成功  2操作失败
+        // proStatus(status,warn){  
+        //     let that = this 
+        //     this.warn = warn 
+        //     that.proboxStatus = status 
+        //     console.log(that.proboxStatus)
+        //     setTimeout(function() {
+        //         that.proboxStatus = 0 
+        //         this.warn = "" 
+        //     },1000) 
+        // },
+        delitem(id){
+            if(confirm("确定删除该魔方图片？")==1){
+                this.httpreq("11103",id)
+            }
+        },
+      addlist(){
+            let newid = 0;
+            if(this.list.length<4){
+                for(var item of this.list){
+                    if(item.id > newid){
+                        newid = item.id
+                    }
+                }
+                newid = newid+1
+                this.list.push({
+                    id: newid,
+                    imgpath: "",
+                    url: ""
+                })
+            }else{
+                console.log("error");
+            }
+      }
   },
-  destroyed: function() {}
+  /* event listeners code in mounted function*/
+    mounted: function() {
+        let that = this 
+        var comp = $("#tbody")
+            comp.sortable(
+                { handle: "a" }
+        );
+        comp.disableSelection();
+        this.table = this.$store.state.status.curtable
+
+        that.httpreq("11301");
+
+    },
+    destroyed: function() {}
 };
 </script>

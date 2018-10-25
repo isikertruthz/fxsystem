@@ -6,7 +6,7 @@
 <script>
   /* Ueditor 富文本编辑器插件 */
   export default {
-    name: 'UE',
+    // name: 'UE',
     data () {
       return {
         editor: null

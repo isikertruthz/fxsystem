@@ -42,7 +42,7 @@ export default{
 			            id:"3",
 			            name:"魔方推荐",
 						url:'/admin/cube',
-						table:"slide"},
+						table:"cube"},
 						
 			            {
 			            id:"4",

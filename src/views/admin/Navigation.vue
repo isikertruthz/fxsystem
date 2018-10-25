@@ -1,7 +1,7 @@
 <template>
   <!-- /admin下所有路由页面有继承该div样式，避免页面排版混乱 -->
   <div>
-    <div class="comm-view" :class="commLay==240?messhiden?'pad-lefta pad-right':'pad-lefta':commLay==130?messhiden?'pad-leftb pad-right':'pad-leftb':commLay==170?messhiden?'pad-leftc pad-right':'pad-leftc':commLay==60?messhiden?'pad-leftd pad-right':'pad-leftd':''" style="position:fixed;height:0px;z-index:1" v-if="scrollth">
+    <div class="comm-view" :class="commLay==240?messhiden?'pad-lefta pad-right':'pad-lefta':commLay==130?messhiden?'pad-leftb pad-right':'pad-leftb':commLay==170?messhiden?'pad-leftc pad-right':'pad-leftc':commLay==60?messhiden?'pad-leftd pad-right':'pad-leftd':''" style="position:fixed;height:0px;z-index:1" v-if="scrollth && !tmp">
       <div class="content" >
         <div class="content-top" style="min-height:35px;padding-bottom:0;">
           <div class="content-thr">
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-  <div class="comm-view" :class="commLay==240?messhiden?'pad-lefta pad-right':'pad-lefta':commLay==130?messhiden?'pad-leftb pad-right':'pad-leftb':commLay==170?messhiden?'pad-leftc pad-right':'pad-leftc':commLay==60?messhiden?'pad-leftd pad-right':'pad-leftd':''"  style="position:absolute">
+  <div class="comm-view" :class="commLay==240?messhiden?'pad-lefta pad-right':'pad-lefta':commLay==130?messhiden?'pad-leftb pad-right':'pad-leftb':commLay==170?messhiden?'pad-leftc pad-right':'pad-leftc':commLay==60?messhiden?'pad-leftd pad-right':'pad-leftd':''">
     <div class="dp-location">
       <span class="loc-bor">当前位置：<label class="page-location">{{pageLoction}}管理
         </label>
@@ -40,17 +40,22 @@
     </div>
     <div class="content" >
       <div class="content-top">
-         <div class="modal-content bor-rad" v-if="tmp" style="width:100%;outline:none;box-shadow:none;border:none" >
-            <div class="modal-header">
-              <h5 class="modal-title" id="myModalLabel" v-if="isEdit==0" style="padding-right:28%;font-size:17px;">
-                添加{{pageLoction}}
-              </h5>
-              <h5 class="modal-title" id="myModalLabel" v-else style="padding-right:28%;font-size:17px;">
-                编辑{{pageLoction}}
-              </h5>
+        <!-- 添加界面 -->
+         <div class="modal-content bor-rad" v-if="tmp" style="width:100%;outline:none;box-shadow:none;border:none;min-width:900px;" >
+            <div class="modal-header" style="position:relative;min-width:1000px;">
+              <button type="button" class="btn btn-default btn-xs" data-dismiss="modal" @click="changetmp()" style="font-size:13px;position:absolute;left:20px;top:16px;"><span class="fa fa-reply" style="padding-right:3px;font-size:12px;"></span>返回
+              </button>
+              <div style="width:100%;height:100%;max-width:1600px;min-width:800px;">
+                <span class="modal-title" id="myModalLabel" v-if="isEdit==0" style="padding-right:28%;font-size:16px;font-weight:bold;">
+                  添加{{pageLoction}}
+                </span>
+                <span class="modal-title" id="myModalLabel" v-else style="padding-right:28%;font-size:16px;font-weight:bold;">
+                  编辑{{pageLoction}}
+                </span>
+              </div>
             </div>
             <form class="form-horizontal" style="font-size:12px; " role="form">
-            <div class="modal-body" style="padding-right:25%">
+            <div class="modal-body" style="padding-right:25%;max-width:1600px;min-width:800px;">
               <div class="form-group mar-top-mx" :class="haserror?'has-error':''" >
                 <label for="firstname" class="col-sm-2 control-label padding-le">排序:</label>
                 <div class="col-sm-10 padding-l">
@@ -58,7 +63,7 @@
                 </div>
               </div>
               <div class="form-group mar-top-mx">
-                <label for="firstname" class="col-sm-2 control-label padding-le">{{pageLoction}}标题:</label>
+                <label for="firstname" class="col-sm-2 control-label padding-le">标题:</label>
                 <div class="col-sm-10 padding-l">
                   <input type="text" v-model="slide.name" class="form-control" placeholder="">
                 </div>
@@ -95,6 +100,12 @@
                   </div>
                 </div>
               </div>
+              <div class="form-group mar-top-mx" v-show="false">
+                <label for="firstname" class="col-sm-2 control-label padding-le">{{pageLoction}}内容:</label>
+                <div class="col-sm-10 padding-l text-left">
+                    <UE :defaultMsg=defaultMsg :config=config ref="ue"></UE>
+                </div>
+              </div>
               <div class="text-right">
               <button type="button" class="btn btn-default" data-dismiss="modal" @click="changetmp()">返回列表
               </button>
@@ -108,8 +119,7 @@
             </div>
             </form>
           </div>
-
-        <!-- 添加界面 -->
+        <!-- 首界面 -->
         <div v-if="!tmp">
         <div class="content-sub">
           <button type="button" class="btn btn-primary btn-sm c-blue" data-toggle="modal" data-target="#myModal" @click="addList()">
@@ -117,12 +127,12 @@
           </button>
           <span>
           <div class="form-group dis-inblo">
-            <select class="form-control sel-width" style="font-size:12px;position:absolute;top:18px;right:290px; " v-model="selectStatus">
+            <select class="form-control sel-width" style="font-size:12px;position:absolute;top:18px;right:275px; " v-model="selectStatus">
               <option v-for="item in selList" :value="item.value" :key="item.id">{{item.name}}</option>
             </select>
           </div>
-          <input type="text" v-model="keyword" class="form-control inp-hig" id="searchp" style="position:absolute;top:18px;right:85px;margin-top:0" placeholder="请输入关键词" @keyup.enter="search">
-          <button type="button" class="btn btn-primary btn-sm c-blue" @click='httpreq("11107")' style="position:absolute;right:40px;top:18px;">
+          <input type="text" v-model="keyword" class="form-control inp-hig" style="position:absolute;top:18px;right:70px;margin-top:0" placeholder="请输入关键词" id="searchp" @keyup.enter="search">
+          <button type="button" class="btn btn-primary btn-sm c-blue" @click='httpreq("11107")' style="position:absolute;right:25px;top:18px;">
             搜索
           </button>
 
@@ -135,7 +145,7 @@
         <div class="content-thr" v-else>
           <hr class="mar-0">
           <div class="fun-hig">
-            <input type="checkbox" class="allCheck" v-model="allCheck" id="allCheck" value="">
+            <input type="checkbox" class="allCheck" v-model="allCheck" id="allCheck" value="" style="position:relative;top:5px;">
             <button class="btn btn-success btn-xs bor-rad bt-success" @click='httpreq("11105","0")'>
               <span class="fa fa-eye pad-rig-m"></span>显示
             </button>
@@ -150,7 +160,7 @@
           <div>
             <table class="table table-striped" style="word-break:break-all;  word-wrap:break-all; font-size:13px; margin-bottom:0px; ">
               <colgroup>
-                <col style="width:5%; ">
+                <col style="width:5%;">
                 <col style="width:7%; ">
                 <col style="width:8%; ">
                 <col style="width:25%; ">
@@ -210,7 +220,7 @@
             <hr class="mar-0">
             <div class="fun-hig" style="position:relative;">
               <span>
-                <input type="checkbox" class="allCheck" v-model="allCheck" id="allCheck" value="">
+                <input type="checkbox" class="allCheck" v-model="allCheck" id="allCheck" value="" style="position:relative;top:5px;">
                 <button class="btn btn-success btn-xs bor-rad bt-success" @click='httpreq("11105","0")'>
                   <span class="fa fa-eye pad-rig-m"></span>显示
                 </button>
@@ -221,7 +231,7 @@
                   <span class="fa fa-trash-o pad-rig-m"></span>删除
                 </button>
               </span>
-              <span style="position:absolute;right:0;font-size:12px;margin:6px 5px 0 0; ">共 {{this.list.length}} 条记录</span>
+              <span style="position:absolute;right:0;font-size:13px;margin:6px 5px 0 0; ">共 {{this.list.length}} 条记录</span>
             </div>
             <hr class="mar-0">
           </div>
@@ -281,16 +291,6 @@
                   </div>
                 </div>
               </div>
-              <div class="text-right">
-              <button type="button" class="btn btn-default" data-dismiss="modal" @click="changetmp()">返回列表
-              </button>
-              <button type="button" class="btn btn-primary color-blue" @click='httpreq("11102")' v-if="isEdit==0">
-                提交添加
-              </button>
-              <button type="button" class="btn btn-primary color-blue" @click='httpreq("11108")' v-else-if="isEdit==1">
-                提交更改
-              </button>
-              </div>
             </div>
             </form>
           </div>
@@ -318,8 +318,10 @@
 </template>
 
 <script>
+// import UE from '@/components/Ueditor.vue'
 export default {
-  data () {
+// components: {UE},
+data () {
     return {
       datachange : true, // 监听刷新数据
       location:"",
@@ -338,7 +340,14 @@ export default {
       slide:{ ordernum: null,name: "",imgpath: "",url: "",status: 1 },
       tmp : false,
       haserror : false,
-      scrollth : false
+      scrollth : false,
+
+      defaultMsg: '请输入正文',
+      config: {
+        initialFrameWidth: null,
+        initialFrameHeight: 300
+      }
+
     }
   },
   computed:{
@@ -367,9 +376,6 @@ export default {
     subhiden(){
       return this.$store.state.status.subSidebarVisit
     },
-    messhiden(){
-      return this.$store.state.status.messagebarVisit
-    },
     sidebarmax(){
       return this.$store.state.status.sidebarmax
     },
@@ -377,7 +383,8 @@ export default {
       return this.$store.state.status.messagebarVisit
     },
     pageLoction(){
-      return this.$store.state.status.pageLoction
+      let pageLoction = this.$store.state.status.pageLoction.replace("管理","")
+      return pageLoction
     }
   },
 
@@ -409,6 +416,10 @@ export default {
   },
 
   methods:{
+    getUEContent() {
+        let content = this.$refs.ue.getUEContent();
+        console.log(content)
+    },
     changetmp(){
       this.tmp = !this.tmp
     },
@@ -427,7 +438,6 @@ export default {
           }else{
             this.proStatus(3,"操作失败")
           }
-
           break 
         case "11101":
           this.$http.get("api/main.php?ywtype="+ywtype+"&tb="+this.table).then(response=>{
@@ -501,6 +511,7 @@ export default {
           break 
         case "11108":
           if(!this.haserror){
+            // this.slide.content = this.$refs.ue.getUEContent();
             this.$http.post("api/main.php?ywtype="+ywtype+"&tb="+this.table,this.slide).then(response=>{
                         $("#myModal").modal('hide') 
                         this.dtChange() 
@@ -510,7 +521,21 @@ export default {
           }else{
             this.proStatus(3,"操作失败") 
           }
-
+          break 
+        case "11204":
+          if(!this.haserror && this.slide.ordernum!=null){
+            // this.getUEContent()
+            this.slide.content = this.$refs.ue.getUEContent();
+            this.slide.table = this.table
+            this.$http.post("api/main.php?ywtype="+ywtype,this.slide).then(response=>{
+              $("#myModal").modal('hide')
+              this.dtChange()
+              this.proStatus(1)
+              this.tmp = false
+            })
+          }else{
+            this.proStatus(3,"操作失败")
+          }
           break 
         default:
           break 
@@ -546,6 +571,7 @@ export default {
       for(var item of this.list){
         if(item.id==key){
           this.slide = item
+          this.defaultMsg = item.content
         }
       }
       this.slide.id = key 
@@ -562,6 +588,7 @@ export default {
         url :"",
         status : 1
       },
+      this.defaultMsg = ""
       this.imgTmp = "http://www.entertry.com/imgdef.png"
       this.changetmp()
     },
@@ -600,7 +627,6 @@ export default {
     },
     handleScroll(){
       var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-      console.log(scrollTop);
       if (scrollTop>157) {
         this.scrollth = true;
       }else{
@@ -615,7 +641,7 @@ export default {
       $("#searchp").focus();
   },
   destroyed () {//离开该页面需要移除这个监听的事件
-  window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>

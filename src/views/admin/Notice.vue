@@ -41,19 +41,21 @@
     <div class="content" >
       <div class="content-top">
         <!-- 添加界面 -->
-         <div class="modal-content bor-rad" v-if="tmp" style="width:100%;outline:none;box-shadow:none;border:none" >
-            <div class="modal-header" style="position:relative;">
+         <div class="modal-content bor-rad" v-if="tmp" style="width:100%;outline:none;box-shadow:none;border:none;min-width:900px;" >
+            <div class="modal-header" style="position:relative;min-width:1000px;">
               <button type="button" class="btn btn-default btn-xs" data-dismiss="modal" @click="changetmp()" style="font-size:13px;position:absolute;left:20px;top:16px;"><span class="fa fa-reply" style="padding-right:3px;font-size:12px;"></span>返回
               </button>
-              <span class="modal-title" id="myModalLabel" v-if="isEdit==0" style="padding-right:25%;font-size:16px;font-weight:bold;">
-                添加{{pageLoction}}
-              </span>
-              <span class="modal-title" id="myModalLabel" v-else style="padding-right:28%;font-size:16px;font-weight:bold;">
-                编辑{{pageLoction}}
-              </span>
+              <div style="width:100%;height:100%;max-width:1600px;min-width:800px;">
+                <span class="modal-title" id="myModalLabel" v-if="isEdit==0" style="padding-right:28%;font-size:16px;font-weight:bold;">
+                  添加{{pageLoction}}
+                </span>
+                <span class="modal-title" id="myModalLabel" v-else style="padding-right:28%;font-size:16px;font-weight:bold;">
+                  编辑{{pageLoction}}
+                </span>
+              </div>
             </div>
             <form class="form-horizontal" style="font-size:12px; " role="form">
-            <div class="modal-body" style="padding-right:25%">
+            <div class="modal-body" style="padding-right:25%;max-width:1600px;min-width:800px;">
               <div class="form-group mar-top-mx" :class="haserror?'has-error':''" >
                 <label for="firstname" class="col-sm-2 control-label padding-le">排序:</label>
                 <div class="col-sm-10 padding-l">
@@ -99,7 +101,7 @@
                 </div>
               </div>
               <div class="form-group mar-top-mx">
-                <label for="firstname" class="col-sm-2 control-label padding-le">公告内容:</label>
+                <label for="firstname" class="col-sm-2 control-label padding-le">{{pageLoction}}内容:</label>
                 <div class="col-sm-10 padding-l text-left">
                     <UE :defaultMsg=defaultMsg :config=config ref="ue"></UE>
                 </div>
@@ -125,12 +127,12 @@
           </button>
           <span>
           <div class="form-group dis-inblo">
-            <select class="form-control sel-width" style="font-size:12px;position:absolute;top:18px;right:290px; " v-model="selectStatus">
+            <select class="form-control sel-width" style="font-size:12px;position:absolute;top:18px;right:275px; " v-model="selectStatus">
               <option v-for="item in selList" :value="item.value" :key="item.id">{{item.name}}</option>
             </select>
           </div>
-          <input type="text" v-model="keyword" class="form-control inp-hig" style="position:absolute;top:18px;right:85px;margin-top:0" placeholder="请输入关键词" id="searchp" @keyup.enter="search">
-          <button type="button" class="btn btn-primary btn-sm c-blue" @click='httpreq("11107")' style="position:absolute;right:40px;top:18px;">
+          <input type="text" v-model="keyword" class="form-control inp-hig" style="position:absolute;top:18px;right:70px;margin-top:0" placeholder="请输入关键词" id="searchp" @keyup.enter="search">
+          <button type="button" class="btn btn-primary btn-sm c-blue" @click='httpreq("11107")' style="position:absolute;right:25px;top:18px;">
             搜索
           </button>
 
@@ -143,7 +145,7 @@
         <div class="content-thr" v-else>
           <hr class="mar-0">
           <div class="fun-hig">
-            <input type="checkbox" class="allCheck" v-model="allCheck" id="allCheck" value="">
+            <input type="checkbox" class="allCheck" v-model="allCheck" id="allCheck" value="" style="position:relative;top:5px;">
             <button class="btn btn-success btn-xs bor-rad bt-success" @click='httpreq("11105","0")'>
               <span class="fa fa-eye pad-rig-m"></span>显示
             </button>
@@ -158,7 +160,7 @@
           <div>
             <table class="table table-striped" style="word-break:break-all;  word-wrap:break-all; font-size:13px; margin-bottom:0px; ">
               <colgroup>
-                <col style="width:5%; ">
+                <col style="width:5%;">
                 <col style="width:7%; ">
                 <col style="width:8%; ">
                 <col style="width:25%; ">
@@ -218,7 +220,7 @@
             <hr class="mar-0">
             <div class="fun-hig" style="position:relative;">
               <span>
-                <input type="checkbox" class="allCheck" v-model="allCheck" id="allCheck" value="">
+                <input type="checkbox" class="allCheck" v-model="allCheck" id="allCheck" value="" style="position:relative;top:5px;">
                 <button class="btn btn-success btn-xs bor-rad bt-success" @click='httpreq("11105","0")'>
                   <span class="fa fa-eye pad-rig-m"></span>显示
                 </button>
@@ -229,7 +231,7 @@
                   <span class="fa fa-trash-o pad-rig-m"></span>删除
                 </button>
               </span>
-              <span style="position:absolute;right:0;font-size:12px;margin:6px 5px 0 0; ">共 {{this.list.length}} 条记录</span>
+              <span style="position:absolute;right:0;font-size:13px;margin:6px 5px 0 0; ">共 {{this.list.length}} 条记录</span>
             </div>
             <hr class="mar-0">
           </div>
@@ -343,7 +345,7 @@ data () {
       defaultMsg: '请输入正文',
       config: {
         initialFrameWidth: null,
-        initialFrameHeight: 350
+        initialFrameHeight: 300
       }
 
     }
@@ -423,12 +425,11 @@ data () {
     },
     httpreq(ywtype){
       switch(ywtype){
-        case "11204":
+        case "11102":
           if(!this.haserror && this.slide.ordernum!=null){
-            // this.getUEContent()
-            this.slide.content = this.$refs.ue.getUEContent();
             this.slide.table = this.table
             this.$http.post("api/main.php?ywtype="+ywtype,this.slide).then(response=>{
+              console.log(response)
               $("#myModal").modal('hide')
               this.dtChange()
               this.proStatus(1)
@@ -437,7 +438,6 @@ data () {
           }else{
             this.proStatus(3,"操作失败")
           }
-
           break 
         case "11101":
           this.$http.get("api/main.php?ywtype="+ywtype+"&tb="+this.table).then(response=>{
@@ -522,7 +522,21 @@ data () {
             this.proStatus(3,"操作失败") 
           }
           break 
-
+        case "11204":
+          if(!this.haserror && this.slide.ordernum!=null){
+            // this.getUEContent()
+            this.slide.content = this.$refs.ue.getUEContent();
+            this.slide.table = this.table
+            this.$http.post("api/main.php?ywtype="+ywtype,this.slide).then(response=>{
+              $("#myModal").modal('hide')
+              this.dtChange()
+              this.proStatus(1)
+              this.tmp = false
+            })
+          }else{
+            this.proStatus(3,"操作失败")
+          }
+          break 
         default:
           break 
       }

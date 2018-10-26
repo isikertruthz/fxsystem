@@ -15,10 +15,15 @@ import '@/assets/font-awesome-4.7.0/css/font-awesome.css'  //图标库
 
 
 /* 富文本插件 */
-import '@/assets/ueditor/ueditor.config.js'
-import '@/assets/ueditor/ueditor.all.js'
-import '@/assets/ueditor/lang/zh-cn/zh-cn.js'
-import '@/assets/ueditor/ueditor.parse.js'
+// import '@/assets/ueditor/ueditor.config.js'
+// import '@/assets/ueditor/ueditor.all.js'
+// import '@/assets/ueditor/lang/zh-cn/zh-cn.js'
+// import '@/assets/ueditor/ueditor.parse.js'
+
+import '@/assets/ueditor/ueditor.config.min.js'
+import '@/assets/ueditor/ueditor.all.min.js'
+import '@/assets/ueditor/lang/zh-cn/zh-cn.min.js'
+import '@/assets/ueditor/ueditor.parse.min.js'
 
 import '@/assets/common.css' //公共样式
 import utils from '@/utils/utils.js'  //封装的类

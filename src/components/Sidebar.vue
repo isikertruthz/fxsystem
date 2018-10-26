@@ -48,7 +48,7 @@ export default{
 			            id:"4",
 			            name:"商品推荐",
 						url:'/admin/goodsrec',
-						table:"slide"},
+						table:"goods"},
 			            {
 			            id:"5",
 			            name:"排版设置",

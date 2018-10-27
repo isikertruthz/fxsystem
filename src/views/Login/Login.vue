@@ -3,11 +3,11 @@
 		<div class="login-content">
 			<div class="login-logo">
 				<h3 style="line-height:50px; padding:12px 0; font-size:28px;">企泰科技分销系统</h3>
-				<img src="http://weifx.webqt.cn/attachment/images/global/GYonk7Us7zuStkutoydOVdOt9t04uU.png" style="height:150px;width:150px;margin-bottom:15px;">
+				<img src="https://www.entertry.com/images/img/qcode.png" style="height:150px;width:150px;margin-bottom:15px;">
 				<h4>扫一扫加入官方公众号立即体验</h4>
 			</div>
 			<div class="login">
-				<img src="http://weifx.webqt.cn/web/resource/affordable/images/logo-new.png" style="margin:38px 0 25px 0">
+				<img src="https://www.entertry.com/images/img/logo-new.png" style="margin:38px 0 25px 0">
 			    <form class="bs-example bs-example-form" role="form">
 			        <div class="input-group input-width">
 			            <span class="input-group-addon"><label class="fa fa-user-circle-o"></label></span>

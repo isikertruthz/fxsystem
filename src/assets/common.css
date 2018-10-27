@@ -479,7 +479,7 @@ a {
 
 .sidebar-item ul {
     height: calc(100% - 50px);
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 

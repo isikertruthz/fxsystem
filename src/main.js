@@ -3,27 +3,22 @@
 import Vue from 'vue'
 import App from '@/App' //初始模板
 
+import axios from 'axios'	//异步请求，后台通信
 import router from '@/router'  //路由
 import store from '@/store'  //状态处理,组件通信
-import axios from 'axios'	//异步请求，后台通信
 
 import $ from 'jquery'
-import '@/assets/jquery-ui-1.12.1/jquery-ui.min.js'
-import '@/assets/bootstrap/css/bootstrap.min.css'  //bootstrap框架
-import '@/assets/bootstrap/js/bootstrap.min.js'
-import '@/assets/font-awesome-4.7.0/css/font-awesome.css'  //图标库
+import '../static/jquery-ui-1.12.1/jquery-ui.min.js'
+import '../static/bootstrap/css/bootstrap.min.css'  //bootstrap框架
+import '../static/bootstrap/js/bootstrap.min.js'
+import '../static/font-awesome-4.7.0/css/font-awesome.css'  //图标库
 
 
 /* 富文本插件 */
-// import '@/assets/ueditor/ueditor.config.js'
-// import '@/assets/ueditor/ueditor.all.js'
-// import '@/assets/ueditor/lang/zh-cn/zh-cn.js'
-// import '@/assets/ueditor/ueditor.parse.js'
-
-import '@/assets/ueditor/ueditor.config.min.js'
-import '@/assets/ueditor/ueditor.all.min.js'
-import '@/assets/ueditor/lang/zh-cn/zh-cn.min.js'
-import '@/assets/ueditor/ueditor.parse.min.js'
+import '../static/ueditor/ueditor.config.js'
+import '../static/ueditor/ueditor.all.min.js'
+import '../static/ueditor/lang/zh-cn/zh-cn.js'
+import '../static/ueditor/ueditor.parse.min.js'
 
 import '@/assets/common.css' //公共样式
 import utils from '@/utils/utils.js'  //封装的类

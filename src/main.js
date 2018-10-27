@@ -11,11 +11,9 @@ import $ from 'jquery'
 import '../static/jquery-ui-1.12.1/jquery-ui.min.js'
 import '../static/bootstrap/css/bootstrap.min.css'  //bootstrap框架
 import '../static/bootstrap/js/bootstrap.min.js'
-import '../static/font-awesome-4.7.0/css/font-awesome.css'  //图标库
+import '../static/font-awesome-4.7.0/css/font-awesome.min.css'  //图标库
 
-
-/* 富文本插件 */
-import '../static/ueditor/ueditor.config.js'
+import '../static/ueditor/ueditor.config.js'  /* 富文本插件 */
 import '../static/ueditor/ueditor.all.min.js'
 import '../static/ueditor/lang/zh-cn/zh-cn.js'
 import '../static/ueditor/ueditor.parse.min.js'

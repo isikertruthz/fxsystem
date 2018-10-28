@@ -318,6 +318,10 @@
 </template>
 
 <script>
+import '../../../static/ueditor/ueditor.config.js'  /* 富文本插件 */
+import '../../../static/ueditor/ueditor.all.min.js'
+import '../../../static/ueditor/lang/zh-cn/zh-cn.js'
+import '../../../static/ueditor/ueditor.parse.min.js'
 import UE from '@/components/Ueditor.vue'
 export default {
 components: {UE},

@@ -1,12 +1,12 @@
-import Layout from '@/views/admin/Layout.vue'
-import LanternSlide from '@/views/admin/LanternSlide.vue'
-import Navigation from '@/views/admin/Navigation.vue'
-import Advert from '@/views/admin/Advert.vue'
-import Composition from '@/views/admin/Composition.vue'
-import Cube from '@/views/admin/Cube.vue'
-import Goodsrec from '@/views/admin/Goodsrec.vue'
-import Notice from '@/views/admin/Notice.vue'
-import Template from '@/views/admin/Template.vue'
+const Layout = () => import ('@/views/admin/Layout.vue')
+const LanternSlide = () => import ('@/views/admin/LanternSlide.vue')
+const Navigation = () =>import ('@/views/admin/Navigation.vue')
+const Advert = () => import ('@/views/admin/Advert.vue')
+const Composition = () => import ('@/views/admin/Composition.vue')
+const Cube = () =>import ('@/views/admin/Cube.vue')
+const Goodsrec = () => import ('@/views/admin/Goodsrec.vue')
+const Notice = () => import ('@/views/admin/Notice.vue')
+const Template = () => import ('@/views/admin/Template.vue')
 
 import Login from '@/views/login/Login.vue'
 

@@ -6,7 +6,7 @@ const Composition = () => import ('@/views/admin/Composition.vue')
 const Cube = () =>import ('@/views/admin/Cube.vue')
 const Goodsrec = () => import ('@/views/admin/Goodsrec.vue')
 const Notice = () => import ('@/views/admin/Notice.vue')
-const Templaten = () => import ('@/views/admin/Template.vue')
+const Template = () => import ('@/views/admin/Template.vue')
 
 import Login from '@/views/login/Login.vue'
 

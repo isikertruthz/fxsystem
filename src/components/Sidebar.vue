@@ -67,7 +67,7 @@ export default{
 					  {
 			            id:"7",
 			            name:"秒杀管理",
-						url:'/admin/template',
+						url:'/admin/miaosha',
 						table:""
 					  },
 					  {

@@ -7,6 +7,7 @@ const Cube = () =>import ('@/views/admin/Cube.vue')
 const Goodsrec = () => import ('@/views/admin/Goodsrec.vue')
 const Notice = () => import ('@/views/admin/Notice.vue')
 const Template = () => import ('@/views/admin/Template.vue')
+const MiaoSha = () => import ('@/views/admin/MiaoSha.vue')
 
 import Login from '@/views/login/Login.vue'
 
@@ -21,6 +22,7 @@ const adminRoutes = {
 		{path: 'cube', name: 'cube', component:Cube, meta: {title: "企泰科技分销系统"}},
 		{path: 'notice', name: 'notice', component:Notice, meta: {title: "企泰科技分销系统"}},
 		{path: 'goodsrec', name: 'goodsrec', component:Goodsrec, meta: {title: "企泰科技分销系统"}},
+		{path: 'miaosha', name: 'miaosha', component:MiaoSha, meta: {title: "企泰科技分销系统"}},
 	]
 }
 

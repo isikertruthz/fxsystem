@@ -13,10 +13,12 @@ import '../static/bootstrap/css/bootstrap.min.css'  //bootstrap框架
 import '../static/bootstrap/js/bootstrap.min.js'
 import '../static/font-awesome-4.7.0/css/font-awesome.min.css'  //图标库
 
-import '@/assets/common.css' //公共样式
+import '@/assets/js/public.js'
+
+import '@/assets/css/common.css' //公共样式
 import utils from '@/utils/utils.js'  //封装的类
 import storage from '@/utils/storage.js'  //封装的类
-import global_ from '@/constants/global'  //全局常量
+import global_ from '@/utils/global'  //全局常量
 
 axios.defaults.baseURL = global_.BASE_URL
 

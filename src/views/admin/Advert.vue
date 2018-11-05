@@ -161,7 +161,7 @@
                     class="col-sm-2 control-label padding-le"
                   >{{pageLoction}}内容:</label>
                   <div class="col-sm-10 padding-l text-left">
-                    <UE :defaultMsg="defaultMsg" :config="config" ref="ue"></UE>
+                    <!-- <UE :defaultMsg="defaultMsg" :config="config" ref="ue"></UE> -->
                   </div>
                 </div>
                 <div class="text-right">
@@ -296,12 +296,12 @@
                       <td class="text-center">
                         <span id="imglist">
                           <img
-                            :src="item.imgpath==''||item.imgpath==null?'http://www.entertry.com/imgdef.png':'http://www.entertry.com/upload/'+item.imgpath"
+                            :src="item.imgpath==''||item.imgpath==null?'http://localhost/imgdef.png':'http://localhost/upload/'+item.imgpath"
                             class="img-30"
                           >
                           <span>
                             <img
-                              :src="item.imgpath==''||item.imgpath==null?'http://www.entertry.com/imgdef.png':'http://www.entertry.com/upload/'+item.imgpath"
+                              :src="item.imgpath==''||item.imgpath==null?'http://localhost/imgdef.png':'http://localhost/upload/'+item.imgpath"
                             >
                           </span>
                           <div class="triangle-down"></div>
@@ -525,7 +525,7 @@ export default {
       selectedTmp: [],
       allCheck: [],
       list: [], // 返回表数据
-      imgTmp: "http://www.entertry.com/imgdef.png",
+      imgTmp: "http://localhost/imgdef.png",
       // 表结构
       slide: { ordernum: null, name: "", imgpath: "", url: "", status: 1 },
       tmp: false,
@@ -621,7 +621,7 @@ export default {
   methods: {
     getUEContent() {
       let content = this.$refs.ue.getUEContent();
-      console.log(content);
+      // console.log(content);
     },
     changetmp() {
       this.tmp = !this.tmp;
@@ -634,7 +634,7 @@ export default {
             this.$http
               .post("api/main.php?ywtype=" + ywtype, this.slide)
               .then(response => {
-                console.log(response);
+                // console.log(response);
                 $("#myModal").modal("hide");
                 this.dtChange();
                 this.proStatus(1);
@@ -827,7 +827,7 @@ export default {
       let that = this;
       this.warn = warn;
       that.proboxStatus = status;
-      console.log(that.proboxStatus);
+      // console.log(that.proboxStatus);
       setTimeout(function() {
         that.proboxStatus = 0;
         this.warn = "";
@@ -858,7 +858,7 @@ export default {
         status: 1
       }),
         (this.defaultMsg = "");
-      this.imgTmp = "http://www.entertry.com/imgdef.png";
+      this.imgTmp = "http://localhost/imgdef.png";
       this.changetmp();
     },
 

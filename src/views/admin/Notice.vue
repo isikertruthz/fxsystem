@@ -187,9 +187,9 @@
                   <td class="text-center">{{item.ordernum}}</td>
                   <td class="text-center">
                     <span id="imglist">
-                      <img :src="item.imgpath==''||item.imgpath==null?'http://www.entertry.com/imgdef.png':'http://www.entertry.com/upload/'+item.imgpath" class="img-30">
+                      <img :src="item.imgpath==''||item.imgpath==null?'http://localhost/imgdef.png':'http://localhost/upload/'+item.imgpath" class="img-30">
                       <span>
-                        <img :src="item.imgpath==''||item.imgpath==null?'http://www.entertry.com/imgdef.png':'http://www.entertry.com/upload/'+item.imgpath" >
+                        <img :src="item.imgpath==''||item.imgpath==null?'http://localhost/imgdef.png':'http://localhost/upload/'+item.imgpath" >
                       </span>
                       <div class="triangle-down"></div>
                     </span>
@@ -339,7 +339,7 @@ data () {
       selectedTmp : [],
       allCheck :[],
       list:[],  // 返回表数据
-      imgTmp: "http://www.entertry.com/imgdef.png",
+      imgTmp: "http://localhost/imgdef.png",
       // 表结构
       slide:{ ordernum: null,name: "",imgpath: "",url: "",status: 1 },
       tmp : false,
@@ -593,7 +593,7 @@ data () {
         status : 1
       },
       this.defaultMsg = ""
-      this.imgTmp = "http://www.entertry.com/imgdef.png"
+      this.imgTmp = "http://localhost/imgdef.png"
       this.changetmp()
     },
 

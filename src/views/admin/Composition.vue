@@ -16,7 +16,7 @@
             <li class="compsearch" style="width:530px;padding:0 160px 0  100px;margin-left:30px;" v-for="item in list"
               :key="item.id" :id="item.id">
               <div style="position:relative">
-                <img :src="'https://www.entertry.com/images/img/'+item.imgpath" alt="">
+                <img :src="'http://localhost/images/img/'+item.imgpath" alt="">
                 <span style="position:absolute;left:-70px;top:3px;">{{item.name}}</span>
                 <span style="position:absolute;right:-100px;top:3px;">是否显示</span>
                 <label class="switch switch-mini" style="position:absolute;right:-120px;top:0px;">
@@ -99,7 +99,7 @@
               });
             break;
           case "11202": //提交
-            console.log(this.isvisited)
+            // console.log(this.isvisited)
             let data = {}
             data.serial = arguments[1];
             data.isvisited = this.isvisited;
@@ -109,7 +109,7 @@
                 data
               )
               .then(response => {
-                  console.log(response)
+                  // console.log(response)
               });
             break;
           case "11203": //初始化

@@ -179,7 +179,7 @@ export default {
         }, 300);
         setTimeout(function() {
             $("#thrCate" + thrid).click();
-            console.log(rootid + secid + thrid);
+            // console.log(rootid + secid + thrid);
         }, 500);
         },
         openVisited(rootid, secid, thrid) {
@@ -210,7 +210,7 @@ export default {
         }
     },
     mounted: function() {
-        console.log(this.$storage.get("visited"));
+        // console.log(this.$storage.get("visited"));
         $("#funseach").focus();
     }
 };

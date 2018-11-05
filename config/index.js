@@ -12,13 +12,21 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
         '/apis':{
-            target :'https://www.entertry.com',
-            secure :true,
+            target :'http://localhost/',
+            secure :false,
             changeOrigin:true,
             pathRewrite:{
                 '^/apis':''
             }
         }
+        // '/apis':{
+        //     target :'https://www.entertry.com',
+        //     secure :true,
+        //     changeOrigin:true,
+        //     pathRewrite:{
+        //         '^/apis':''
+        //     }
+        // }
     },
 
     // Various Dev Server settings

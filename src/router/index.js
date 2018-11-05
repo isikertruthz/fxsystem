@@ -11,7 +11,7 @@ const router = new Router({
 
 router.beforeEach((to,from,next)=>{
 	let isLogin = sessionStorage.getItem("isLogin")
-	console.log(isLogin)
+	// console.log(isLogin)
 	if(to.name!="login"){
 		if(isLogin==0 || isLogin==null){
 			if(confirm("请登录")){

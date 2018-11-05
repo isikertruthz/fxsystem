@@ -10,20 +10,8 @@
             <div class="content" > 
                 <div class="content-top">
 
-    <Button>Default</Button>
-    <Button type="primary">Primary</Button>
-    <Button type="dashed">Dashed</Button>
-    <Button type="text">Text</Button>
-    <br><br>
-    <Button type="info">Info</Button>
-    <Button type="success">Success</Button>
-    <Button type="warning">Warning</Button>
-    <Button type="error">Error</Button>
-    <Button type="primary" loading>Loading...</Button>
-        <Button type="primary" :loading="loading" >
-        <span v-if="!loading">Click me!</span>
-        <span v-else>Loading...</span>
-    </Button>
+                    <!-- #code here -->
+                    
                 </div>
             </div>
         </div> <!-- adjust End  -->
@@ -36,14 +24,10 @@
  * on 2018.10.19
  */
 import { mapState } from 'vuex';
-import { Button, Table } from 'iview';
 
 export default {
-    components: {Button},
     data() {
-        return {
-            loading:false
-        }
+        return {}
     },
     computed: {
         ...mapState({

@@ -130,7 +130,7 @@ export default {
         for(var item of this.seclist){
             temp.push(item.name)
         }
-        console.log(temp)
+        // console.log(temp)
         return "已推荐："+ temp.join(";")
     }
   },
@@ -150,7 +150,7 @@ export default {
           this.$http
             .get("api/main.php?ywtype=" + ywtype + "&tb=" + this.table)
             .then(response => {
-              console.log(response);
+            //   console.log(response);
               this.seclist = response.data;
             });
         case "11402": //单个删除

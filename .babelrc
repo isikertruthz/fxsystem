@@ -8,7 +8,10 @@
     }],
     "stage-2"
   ],
-  "plugins": ["transform-remove-strict-mode"],
+  "plugins": ["transform-remove-strict-mode",["import", {
+    "libraryName": "iview",
+    "libraryDirectory": "src/components"
+  }]],
   "env": {
     "test": {
       "presets": ["env", "stage-2"],

@@ -44,7 +44,7 @@
                         style="padding: 0 5px;background-color:white;border-radius: 0;"
                       >
                         <img
-                          :src="item.imgpath==''?imgtmp==''?'http://www.entertry.com/imgdef.png':imgtmp:'http://www.entertry.com/upload/'+item.imgpath"
+                          :src="item.imgpath==''?imgtmp==''?'http://localhost/imgdef.png':imgtmp:'http://localhost/upload/'+item.imgpath"
                           style="height:20px;width:20px"
                         >
                       </div>
@@ -128,7 +128,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      url: "http://www.entertry.com/images/img/",
+      url: "http://localhost/images/img/",
       imgtmp: "",
       list: [
         {
@@ -176,7 +176,7 @@ export default {
           this.$http
             .get("api/main.php?ywtype=" + ywtype + "&tb=" + this.table)
             .then(response => {
-              console.log(response);
+              // console.log(response);
               this.list = response.data;
             });
 
@@ -203,7 +203,7 @@ export default {
         case "11302":
           let temp = [];
           let serial = $("#tbody").sortable("toArray");
-          console.log(serial);
+          // console.log(serial);
           for (var index in this.list) {
             //排序
             for (var indexs in serial) {
@@ -220,7 +220,7 @@ export default {
             this.$http
               .post("api/main.php?ywtype=" + ywtype + "&tb=" + this.table, temp)
               .then(response => {
-                console.log(response);
+                // console.log(response);
                 this.list = response.data;
               });
           }
@@ -261,7 +261,7 @@ export default {
           url: ""
         });
       } else {
-        console.log("error");
+        // console.log("error");
       }
     },
     fileUpload(e, id) {

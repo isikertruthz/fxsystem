@@ -103,7 +103,7 @@
               <div class="form-group mar-top-mx" v-show="false">
                 <label for="firstname" class="col-sm-2 control-label padding-le">{{pageLoction}}内容:</label>
                 <div class="col-sm-10 padding-l text-left">
-                    <UE :defaultMsg=defaultMsg :config=config ref="ue"></UE>
+                    <!-- <UE :defaultMsg=defaultMsg :config=config ref="ue"></UE> -->
                 </div>
               </div>
               <div class="text-right">
@@ -187,9 +187,9 @@
                   <td class="text-center">{{item.ordernum}}</td>
                   <td class="text-center">
                     <span id="imglist">
-                      <img :src="item.imgpath==''||item.imgpath==null?'http://www.entertry.com/imgdef.png':'http://www.entertry.com/upload/'+item.imgpath" class="img-30">
+                      <img :src="item.imgpath==''||item.imgpath==null?'http://localhost/imgdef.png':'http://localhost/upload/'+item.imgpath" class="img-30">
                       <span>
-                        <img :src="item.imgpath==''||item.imgpath==null?'http://www.entertry.com/imgdef.png':'http://www.entertry.com/upload/'+item.imgpath" >
+                        <img :src="item.imgpath==''||item.imgpath==null?'http://localhost/imgdef.png':'http://localhost/upload/'+item.imgpath" >
                       </span>
                       <div class="triangle-down"></div>
                     </span>
@@ -335,7 +335,7 @@ data () {
       selectedTmp : [],
       allCheck :[],
       list:[],  // 返回表数据
-      imgTmp: "http://www.entertry.com/imgdef.png",
+      imgTmp: "http://localhost/imgdef.png",
       // 表结构
       slide:{ ordernum: null,name: "",imgpath: "",url: "",status: 1 },
       tmp : false,
@@ -418,7 +418,7 @@ data () {
   methods:{
     getUEContent() {
         let content = this.$refs.ue.getUEContent();
-        console.log(content)
+        // console.log(content)
     },
     changetmp(){
       this.tmp = !this.tmp
@@ -429,7 +429,7 @@ data () {
           if(!this.haserror && this.slide.ordernum!=null){
             this.slide.table = this.table
             this.$http.post("api/main.php?ywtype="+ywtype,this.slide).then(response=>{
-              console.log(response)
+              // console.log(response)
               $("#myModal").modal('hide')
               this.dtChange()
               this.proStatus(1)
@@ -558,7 +558,7 @@ data () {
       let that = this 
       this.warn = warn 
       that.proboxStatus = status 
-      console.log(that.proboxStatus)
+      // console.log(that.proboxStatus)
       setTimeout(function() {
         that.proboxStatus = 0 
         this.warn = "" 
@@ -589,7 +589,7 @@ data () {
         status : 1
       },
       this.defaultMsg = ""
-      this.imgTmp = "http://www.entertry.com/imgdef.png"
+      this.imgTmp = "http://localhost/imgdef.png"
       this.changetmp()
     },
 

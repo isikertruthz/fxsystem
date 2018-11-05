@@ -9,8 +9,7 @@ const state = {
 	curtable : "",
 	pageLoction: "",
 	clickStatus : false,
-	sidebarmax : true,
-	host:"http://localhost/"
+	sidebarmax : true
 }
 
 const mutations = {

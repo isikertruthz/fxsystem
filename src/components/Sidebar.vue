@@ -79,7 +79,7 @@ export default{
 					  {
 			            id:"8",
 			            name:"评论管理",
-						url:'/admin/template',
+						url:'/admin/comment',
 						table:""
 					  },
 					  {

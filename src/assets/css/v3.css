@@ -1434,8 +1434,8 @@ table .dropdown-menu:before {
     top:50%; margin-top:-5px;
     cursor: pointer;
 }
-input[type=checkbox],
-input[type=radio] {
+.main_content input[type=checkbox],
+.main_content input[type=radio] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -1479,7 +1479,7 @@ input[type=radio].large{
     transition-property:border-color ;
 }
 
-input[type=checkbox],input[type=checkbox].large{
+.main_content input[type=checkbox],input[type=checkbox].large{
     -webkit-border-radius:0px;
     -moz-border-radius:0px;
     border-radius:0px;

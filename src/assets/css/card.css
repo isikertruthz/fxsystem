@@ -1,15 +1,13 @@
 .card-add-span {
-    width:80px;
+    width:100px;
     display:inline-block;
     text-align:right;
     font-weight:bold;
 }
 
 .card-add-input{
-    width: 200px;
-    height:25px;
+    width: 350px;
     margin-left: 15px;
-    padding:0 5px;
 }
 
 .card-add-tabpane{

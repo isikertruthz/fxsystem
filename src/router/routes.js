@@ -6,9 +6,16 @@ const Composition = () => import ('@/views/admin/Composition.vue')
 const Cube = () =>import ('@/views/admin/Cube.vue')
 const Goodsrec = () => import ('@/views/admin/Goodsrec.vue')
 const Notice = () => import ('@/views/admin/Notice.vue')
-const Template = () => import ('@/views/admin/Template.vue')
 const Miaosha = () => import ('@/views/admin/Miaosha.vue')
 const Comment = () => import ('@/views/admin/Comment.vue')
+const Template = () => import ('@/views/admin/Template.vue')
+const CardComInfo = () => import ('@/views/admin/CardComInfo.vue')
+const CardComment = () => import ('@/views/admin/CardComment.vue')
+const CardEmpInfo = () => import ('@/views/admin/CardEmpInfo.vue')
+const Cardlike = () => import ('@/views/admin/Cardlike.vue')
+const CardPerson = () => import ('@/views/admin/CardPerson.vue')
+const CardScan = () => import ('@/views/admin/CardScan.vue')
+const CardUser = () => import ('@/views/admin/CardUser.vue')
 
 import Login from '@/views/login/Login.vue'
 
@@ -25,6 +32,13 @@ const adminRoutes = {
 		{path: 'goodsrec', name: 'goodsrec', component:Goodsrec, meta: {title: "企泰科技分销系统"}},
 		{path: 'miaosha', name: 'miaosha', component:Miaosha, meta: {title: "企泰科技分销系统"}},
 		{path: 'comment', name: 'comment', component:Comment, meta: {title: "企泰科技分销系统"}},
+		{path: 'cardcominfo', name: 'cardcominfo', component:CardComInfo, meta: {title: "企泰科技分销系统"}},
+		{path: 'cardcomment', name: 'cardcomment', component:CardComment, meta: {title: "企泰科技分销系统"}},
+		{path: 'cardempinfo', name: 'cardempinfo', component:CardEmpInfo, meta: {title: "企泰科技分销系统"}},
+		{path: 'cardlike', name: 'cardlike', component:Cardlike, meta: {title: "企泰科技分销系统"}},
+		{path: 'cardperson', name: 'cardperson', component:CardPerson, meta: {title: "企泰科技分销系统"}},
+		{path: 'cardscan', name: 'cardscan', component:CardScan, meta: {title: "企泰科技分销系统"}},
+		{path: 'carduser', name: 'carduser', component:CardUser, meta: {title: "企泰科技分销系统"}},
 	]
 }
 

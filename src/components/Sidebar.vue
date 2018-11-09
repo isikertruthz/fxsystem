@@ -79,7 +79,7 @@ export default{
 					  {
 			            id:"8",
 			            name:"评论管理",
-						url:'/admin/template',
+						url:'/admin/comment',
 						table:""
 					  },
 					  {
@@ -194,9 +194,49 @@ export default{
 				},
 				{	
 					id:"4",
-					name:"门店",
+					name:"名片",
 					url:"#",
-					class:"fa-trophy"
+					class:"fa-trophy",
+					root:[{
+			          id:"5",
+			          name:"名片",
+			          subItems:[{
+			            id:"22",
+			            name:"公司管理",
+						url:'/admin/cardcominfo',
+						table:""},
+						{
+			            id:"23",
+			            name:"员工管理",
+						url:'/admin/cardempinfo',
+						table:""},
+			            {
+			            id:"25",
+			            name:"用户管理",
+						url:'/admin/carduser',
+						table:""},
+			            {
+			            id:"26",
+			            name:"浏览管理",
+						url:'/admin/cardscan',
+						table:""},
+			            {
+			            id:"27",
+			            name:"点赞管理",
+						url:'/admin/cardlike',
+						table:"goods"},
+			            {
+			            id:"28",
+			            name:"评论管理",
+			            url:'/admin/cardcomment',
+						table:""},
+						{
+			            id:"29",
+			            name:"个人信息",
+						url:'/admin/cardperson',
+						table:""},
+						],
+			          }]
 				},
 				{	
 					id:"5",

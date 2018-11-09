@@ -1,0 +1,32 @@
+.card-add-span {
+    width:100px;
+    display:inline-block;
+    text-align:right;
+    font-weight:bold;
+}
+
+.card-add-input{
+    width: 350px;
+    margin-left: 15px;
+}
+
+.card-add-tabpane{
+    text-align:left;
+    padding-top:5px;
+}
+
+.card-add-tabpane .card-add-tabpane-div{
+    margin:15px 0px;
+}
+
+.card-add-img-def{
+    width: 90px;
+    height: 80px;
+}
+
+.card-add-img-upl{
+    width: 100px;
+    height: 100px;
+    margin-left: 15px;
+}
+

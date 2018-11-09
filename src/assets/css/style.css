@@ -1,22 +1,9 @@
 @charset "utf-8";
 
-/* font-awesome @import url("font-awesome.min.css"); */
-/* bootstrap @import url("bootstrap.min.css"); */
-/* iconfont @import url("jquery-ui.css"); */
-
-/* animate  */
-/* @import url("animate.css"); */
-/* common_v3  */
-/* @import url("common_v3.css"); */
-
-/* v3  */
-/* @import url("v3.css"); */
-/* iconfont  */
-/* @import url("../fonts/v3/iconfont.css"); */
-/*iconfont*/
-/* @import url("../fonts/iconfont.css"); */
-/* @import url("../fonts/wxiconx/iconfont.css"); */
-/* @import url("switchery.css"); */
+/* @import url("common_v3.css");
+@import url("v3.css");
+@import url("switchery.css"); */
+/*@import url("iconfont.css");*/
 
 .span_border{border-left: 0;}
 .span_padding{padding-top: 0px;}
@@ -216,12 +203,13 @@
 	font-size: 14px;
 	line-height: 20px;
 	width: 600px;
+	text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .main_content .page-content .btn-group .btn_ea4335{background: #ea4335;font-size: 14px;color: #fff;}
 .main_content .page-content .btn-group .btn_ea4335:hover{border-color: #ea4335;}
-.main_content .page-content .navbar-inner tr th{width: 50px;}
+.main_content .page-content .navbar-inner tr th{width: 30px;}
 .main_content .page-content .table_tbody .table_div{margin: 20px auto;border-bottom: 1px dashed #eee;}
 .main_content .page-content tr td {font-size: 14px;}
 .main_content .page-content tr td .span_1a1a1a{color: #1a1a1a;}
@@ -287,7 +275,7 @@
 .main_content .form-horizontal .tab-content .input_width{width: 160px;}
 .main_content .form-horizontal .tab-content .help-block{font-size: 12px;}
 .main_content .form-horizontal .tab-content .form_btn .btn_34a853,
-.main_content .form-horizontal .tab-content .form_btn .btn_34a853:focus{background: #34a853;color:#fff;font-size: 15px;border-color: #34a853;}
+.main_content .form-horizontal .tab-content .form_btn .btn_34a853:focus{background: #34a853;color:#fff;font-size: 15px;height: auto; border-color: #34a853;}
 .main_content .form-horizontal .tab-content .form_btn .btn_34a853:hover{background: rgba(52, 168, 83, 0.78);color:#fff;border-color: #34a853;}
 .main_content .form-horizontal .tab-content .form_btn .btn_269bf2,
 .main_content .form-horizontal .tab-content .form_btn .btn_269bf2:focus{margin-left: 20px;background: #269bf2;color:#fff;font-size: 15px;border-color: #269bf2;}
@@ -296,14 +284,14 @@
 	/*height: 100px;
     width: 100px;
     margin: -50px auto 0px;*/
-	/* background: url(../images/image.png) center no-repeat; */
+	background: url("../images/image.png") center no-repeat;
 }
 
 /*file上传*/
 .input-file-container {
   position: relative;
 } 
-.js .input-file-trigger {
+.input-file-trigger {
   display: block;
   padding: 0;
   background: #39D2B4;
@@ -314,7 +302,7 @@
   width: 100px;
   height: 100px;
 }
-.js .input-file {
+.input-file {
   position: absolute;
   top: 0; left: 0;
   width: 225px;

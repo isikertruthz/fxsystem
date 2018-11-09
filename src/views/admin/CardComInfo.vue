@@ -14,56 +14,30 @@
             <div class="content" > 
                 <div class="content-top">
                     <Tabs :animated="false" style="padding:10px 20px 10px 20px;" v-model="curtab">
-                        <TabPane label="员工信息">
+                        <TabPane label="公司信息">
                             <Table :columns="columns7" :data="list"></Table>
                         </TabPane>
-                        <TabPane label="添加员工" class="card-add-tabpane" :disabled="secdisabled">
+                        <TabPane label="添加公司" class="card-add-tabpane" :disabled="secdisabled">
                             <div class="card-add-tabpane-div">
-                                <span class="card-add-span">所属公司：</span>
-                                <Select v-model="tempinfo.comid" class="card-add-input" @change="tempinfo.comid = $event.target.value">
-                                    <Option  value="0">请选择</Option>
-                                    <Option  value="1">企泰科技</Option>
-                                </Select>
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">姓名：</span>
+                                <span class="card-add-span">公司名称</span>
                                 <!-- <Input v-model="empname" placeholder="请输入姓名..." size="large" class="card-add-input" /> -->
-                                <Input type="text" v-model="tempinfo.empname" placeholder="请输入姓名..." clearable size="default" class="card-add-input" />
+                                <Input type="text" v-model="tempinfo.comname" placeholder="请输入公司名称..." clearable size="default" class="card-add-input" />
                             </div>
                             <div class="card-add-tabpane-div">
-                                <span class="card-add-span">职位：</span>
-                                <Input type="text" v-model="tempinfo.emppost" placeholder="请输入职位..." clearable class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">手机：</span>
-                                <Input type="text" v-model="tempinfo.mobnum" placeholder="请输入手机..." clearable name="mobnum" class="card-add-input"/>
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">微信：</span>
-                                <Input type="text" v-model="tempinfo.wxnum" placeholder="请输入微信..."  clearable class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">邮箱：</span>
-                                <Input type="text" v-model="tempinfo.email" placeholder="请输入邮箱..."  clearable class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">座机：</span>
-                                <Input type="text" v-model="tempinfo.telphone" placeholder="请输入座机..."  clearable class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">地址：</span>
-                                <Input type="text" v-model="tempinfo.address" placeholder="请输入地址..." clearable  class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span" style="float:left;padding-top:5px;">头像：</span>
+                                <span class="card-add-span" style="float:left;padding-top:5px;">logo：</span>
                                 <input id="perImage" type="file" name="file" style="width: 200px;display:none;" @change="fileUpload($event)" />
-                                <img src="../../assets/images/image.png" class="card-add-img-def" v-if="imgTmp==''">
+                                <img src="../../assets/images/image.png" class="card-add-img-def" v-if="tempinfo.logopath==''">
                                 <img :src="imgTmp" class="card-add-img-upl" v-else>
                                 <Button type="default" size="small" @click="clickUpload()">选择图片</Button>
                             </div>
                             <div class="card-add-tabpane-div">
-                                <span class="card-add-span" style="float:left;padding-top:5px;">个人简介：</span>
-                                <Input type="textarea" v-model="tempinfo.intro" placeholder="个人简介" clearable class="card-add-input" />
+                                <span class="card-add-span">公司官网</span>
+                                <!-- <Input v-model="empname" placeholder="请输入姓名..." size="large" class="card-add-input" /> -->
+                                <Input type="text" v-model="tempinfo.公司官网" placeholder="格式 http://xxxx.xx或https://xxxx.xx" clearable size="default" class="card-add-input" />
+                            </div>
+                            <div class="card-add-tabpane-div">
+                                <span class="card-add-span" style="float:left;padding-top:5px;">公司简介：</span>
+                                <Input type="textarea" v-model="tempinfo.comintro" placeholder="个人简介" clearable class="card-add-input" />
                             </div>
                             <div style="width:465px;text-align:right;">
                                 <Button type="info" size="default" @click="changeTab()">返回</Button>
@@ -73,56 +47,34 @@
                         </TabPane>
                         <TabPane label="修改信息" :disabled="enchange" class="card-add-tabpane">    
                             <div class="card-add-tabpane-div">
-                                <span class="card-add-span">所属公司：</span>
-                                <Select v-model="tempinfo.comid" class="card-add-input" @change="tempinfo.comid = $event.target.value">
-                                    <Option  value="0">请选择</Option>
-                                    <Option  value="1">企泰科技</Option>
-                                </Select>
+                                <span class="card-add-span">公司名称：</span>
+                                <Input type="text" v-model="tempinfo.comname" placeholder="请输入公司名称..." clearable size="default" class="card-add-input" />
                             </div>
                             <div class="card-add-tabpane-div">
-                                <span class="card-add-span">姓名：</span>
-                                <!-- <Input v-model="empname" placeholder="请输入姓名..." size="large" class="card-add-input" /> -->
-                                <Input type="text" v-model="tempinfo.empname" placeholder="请输入姓名..." clearable size="default" class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">职位：</span>
-                                <Input type="text" v-model="tempinfo.emppost" placeholder="请输入职位..." clearable class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">手机：</span>
-                                <Input type="text" v-model="tempinfo.mobnum" placeholder="请输入手机..." clearable name="mobnum" class="card-add-input"/>
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">微信：</span>
-                                <Input type="text" v-model="tempinfo.wxnum" placeholder="请输入微信..."  clearable class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">邮箱：</span>
-                                <Input type="text" v-model="tempinfo.email" placeholder="请输入邮箱..."  clearable class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">座机：</span>
-                                <Input type="text" v-model="tempinfo.telphone" placeholder="请输入座机..."  clearable class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">地址：</span>
-                                <Input type="text" v-model="tempinfo.address" placeholder="请输入地址..." clearable  class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span" style="float:left;padding-top:5px;">头像：</span>
+                                <span class="card-add-span" style="float:left;padding-top:5px;">Logo：</span>
                                 <input id="perImage" type="file" name="file" style="width: 200px;display:none;" @change="fileUpload($event)" />
-                                <img src="../../assets/images/image.png" class="card-add-img-def" v-if="imgTmp==''">
-                                <img :src="imgTmp" class="card-add-img-upl" v-else>
+                                <img src="../../assets/images/image.png" class="card-add-img-def" v-if="tempinfo.logopath==''">
+                                <img :src="'http://localhost/upload/' + list[curindex].logopath" class="card-add-img-upl" v-else>
                                 <Button type="default" size="small" @click="clickUpload()">选择图片</Button>
                             </div>
                             <div class="card-add-tabpane-div">
-                                <span class="card-add-span" style="float:left;padding-top:5px;">个人简介：</span>
-                                <Input type="textarea" v-model="tempinfo.intro" placeholder="个人简介" clearable class="card-add-input" />
+                                <span class="card-add-span">公司官网：</span>
+                                <Input type="text" v-model="tempinfo.comwebsite" placeholder="格式 http://xxxxx.xx" clearable size="default" class="card-add-input" />
+                            </div>
+                            <div class="card-add-tabpane-div">
+                                <span class="card-add-span" style="float:left;padding-top:5px;">公司简介：</span>
+                                <Input type="textarea" v-model="tempinfo.comintro" placeholder="个人简介" clearable class="card-add-input" />
                             </div>
                             <div style="width:465px;text-align:right;">
                                 <Button type="info" size="default" @click="changeTab()">返回</Button>
                                 <Button type="success" @click="request('10004')">修改</Button>
                             </div>
+                        </TabPane>
+                        <TabPane label="动态信息" class="card-add-tabpane">
+                        </TabPane>
+                        <TabPane label="发表动态" class="card-add-tabpane">
+                        </TabPane>
+                        <TabPane label="官网配置" class="card-add-tabpane">
                         </TabPane>
                     </Tabs>
                 </div>
@@ -149,13 +101,13 @@
  * on 2018.10.19
  */
 import { mapState } from 'vuex';
-import {Button,Tabs,TabPane,Table,Modal,Message,Input,Select,Option} from 'iview';
+import {Button,Tabs,TabPane,Table,Modal,Message,Input,Select,Option,Avatar} from 'iview';
 import Vue from 'vue'
 Vue.prototype.$Modal = Modal
 Vue.prototype.$Message = Message
 
 export default {
-    components: {Button,Tabs,TabPane,Table,Modal,Message,Input,Select,Option},
+    components: {Button,Tabs,TabPane,Table,Modal,Message,Input,Select,Option,Avatar},
     data() {
         return {
             curindex : -1,
@@ -184,48 +136,52 @@ export default {
                         // }
                     },
                     {
-                        title: '姓名',
-                        key: 'empname',
+                        title: '公司名称',
+                        key: 'comname',
                         align: 'center',
                     },
                     {
-                        title: '职位',
-                        key: 'emppost',
+                        title: 'Logo',
+                        key: 'logopath',
+                        align: "center",
+                        render: (h, params) => {
+                            return h('div', [
+                                h('Avatar', {
+                                    props: {
+                                        shape:"square",
+                                        size:"large",
+                                        src: 'http://localhost/upload/'+this.list[params.index].logopath
+                                    },
+                                    style: {
+                                        marginRight: '3px'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            
+                                        }
+                                    }
+                                }, '')
+                            ]);
+                        }
+                    },
+                    {
+                        title: '公司简介',
+                        key: 'comintro',
                         align: "center"
                     },
                     {
-                        title: '手机',
-                        key: 'mobnum',
+                        title: '公司官网',
+                        key: 'comwebsite',
                         align: "center"
                     },
                     {
-                        title: '微信',
-                        key: 'wxnum',
+                        title: '创建时间',
+                        key: 'createdate',
                         align: "center"
                     },
                     {
-                        title: '邮箱',
-                        key: 'email',
-                        align: "center"
-                    },
-                    {
-                        title: '座机',
-                        key: 'telphone',
-                        align: "center"
-                    },
-                    {
-                        title: '地址',
-                        key: 'address',
-                        align: "center"
-                    },
-                    {
-                        title: '头像',
-                        key: 'imgpath',
-                        align: "center"
-                    },
-                    {
-                        title: '个人简介',
-                        key: 'intro',
+                        title: '最近修改',
+                        key: 'updatedate',
                         align: "center"
                     },
                     {
@@ -284,30 +240,20 @@ export default {
                 list: [],
                 imgTmp : "",
                 tempinfo : {
-                    comid:"",
-                    empname:"",
-                    emppost:"",
-                    mobnum:"",
-                    wxnum:"",
-                    email: "",
-                    telphone:"",
-                    address:"",
-                    imgpath:"",
-                    intro:"",
-                    photoimage:""
+                    id : -1,
+                    comname : '',
+                    createdate : '',
+                    logopath : '',
+                    updatedate : '',
+                    comintro : '',
                 },
                 tempinfotml : {
-                    comid:"",
-                    empname:"",
-                    emppost:"",
-                    mobnum:"",
-                    wxnum:"",
-                    email: "",
-                    telphone:"",
-                    address:"",
-                    imgpath:"",
-                    intro:"",
-                    photoimage:""
+                    id : -1,
+                    comname : '',
+                    createdate : '',
+                    logopath : '',
+                    updatedate : '',
+                    comintro : '',
                 }
             
         }
@@ -332,12 +278,15 @@ export default {
         }
     },
     watch: {
-        curtab: function () {
+        curtab: function (newval,oldval) {
             if(this.curtab != 2){
                 this.enchange = true;
                 this.secdisabled = false;
             }else{
                 this.secdisabled = true;
+            }
+            if(oldval==2){
+                this.tempinfo = this.tempinfotml;
             }
         }
     },
@@ -347,7 +296,8 @@ export default {
             this.deleteit = false;
         },
         changeUpdateTab (key) {
-            this.curtab = 2
+            this.curindex = key;
+            this.curtab = 2;
             this.tempinfo = this.list[key];
         },
         changeTab () {
@@ -356,26 +306,13 @@ export default {
         },
         show (index) {
                 this.$Modal.info({
-                    title: '员工信息',
-                    content: `姓名：${this.list[index].empname}<br>
-                    职位：${this.list[index].emppost}<br>
-                    手机：${this.list[index].mobnum}<br>
-                    微信：${this.list[index].wxnum}<br>
-                    邮箱：${this.list[index].email}<br>
-                    座机：${this.list[index].telphone}<br>
-                    地址：${this.list[index].address}<br>
-                    简介：${this.list[index].intro}<br>`
+                    title: '公司信息',
+                    content: `名称：${this.list[index].comname}<br>
+                    添加时间：${this.list[index].createdate}<br>
+                    最近修改：${this.list[index].updatedate}<br>`
                 })
             },
         remove (index) {
-<<<<<<< HEAD
-            this.data6.splice(index, 1);
-        },
-        request(){
-            this.$http.get("tp5/public/index.php/admin/test/test?a=1&b=2").then(response=>{
-                console.log(response);
-            })
-=======
             this.deleteit = true;
             this.curindex = index;
         },
@@ -404,17 +341,17 @@ export default {
             // console.log(param.get('file'))  //FormData私有类对象，访问不到，可以通过get判断值是否传进去
 
             that.$http.post("api/main.php?ywtype=10002",param,config).then(response=>{
-                that.tempinfo.imgpath = fileName
+                that.tempinfo.logopath = fileName
             })
         },
         request (ywtype) {
-            let prefixurl = 'tp5/public/index.php/admin/card/';
+            let prefixurl = 'tp5/public/index.php/admin/cardcominfo/';
             let url = '';
             switch (ywtype) {
                 //添加
                 case '10001' :
                     // console.log(this.tempinfo);
-                    url = prefixurl + 'addcard'
+                    url = prefixurl + 'addcomitem'
                     this.$http.post(url,this.tempinfo).then(response=>{
                         this.list.push(response.data.data);
                         this.curtab = 0;
@@ -442,8 +379,10 @@ export default {
                     })
                     break;
                 case '10004':
+                    console.log(this.tempinfo);
                     url = prefixurl + 'updatebyid';
                     this.$http.post(url,this.tempinfo).then(response=>{
+                        this.list[this.curindex].updatedate = response.data.data.updatedate;
                         this.$Message.success('修改成功');
                         this.curtab = 0;
                         this.tempinfo = this.tempinfotml;
@@ -454,7 +393,6 @@ export default {
                 default:
                     break;
             }
->>>>>>> f646e15f80e08f41afb7db4272c8bb9b7e4a4b37
         }
     },
     /* event listeners code in mounted function*/

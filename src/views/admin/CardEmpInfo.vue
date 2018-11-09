@@ -111,8 +111,8 @@
                             <div class="card-add-tabpane-div">
                                 <span class="card-add-span" style="float:left;padding-top:5px;">头像：</span>
                                 <input id="perImage" type="file" name="file" style="width: 200px;display:none;" @change="fileUpload($event)" />
-                                <img src="../../assets/images/image.png" class="card-add-img-def" v-if="imgTmp==''">
-                                <img :src="imgTmp" class="card-add-img-upl" v-else>
+                                <img src="../../assets/images/image.png" class="card-add-img-def" v-if="tempinfo.imgpath==''">
+                                <img :src="'http://localhost/upload/'+ tempinfo.imgpath" class="card-add-img-upl" v-else>
                                 <Button type="default" size="small" @click="clickUpload()">选择图片</Button>
                             </div>
                             <div class="card-add-tabpane-div">
@@ -149,13 +149,13 @@
  * on 2018.10.19
  */
 import { mapState } from 'vuex';
-import {Button,Tabs,TabPane,Table,Modal,Message,Input,Select,Option} from 'iview';
+import {Button,Tabs,TabPane,Table,Modal,Message,Input,Select,Option,Avatar} from 'iview';
 import Vue from 'vue'
 Vue.prototype.$Modal = Modal
 Vue.prototype.$Message = Message
 
 export default {
-    components: {Button,Tabs,TabPane,Table,Modal,Message,Input,Select,Option},
+    components: {Button,Tabs,TabPane,Table,Modal,Message,Input,Select,Option,Avatar},
     data() {
         return {
             curindex : -1,
@@ -221,7 +221,25 @@ export default {
                     {
                         title: '头像',
                         key: 'imgpath',
-                        align: "center"
+                        align: "center",
+                        render: (h, params) => {
+                            return h('div', [
+                                h('Avatar', {
+                                    props: {
+                                        shape:"square",
+                                        size:"large",
+                                        src: "http://localhost/upload/" + this.list[params.index].imgpath
+                                    },
+                                    style: {
+                                        marginRight: '3px'
+                                    },
+                                    on: {
+                                        click: () => {
+                                        }
+                                    }
+                                }, ''),
+                            ]);
+                        }
                     },
                     {
                         title: '个人简介',
@@ -332,12 +350,15 @@ export default {
         }
     },
     watch: {
-        curtab: function () {
+        curtab: function (newval,oldval) {
             if(this.curtab != 2){
                 this.enchange = true;
                 this.secdisabled = false;
             }else{
                 this.secdisabled = true;
+            }
+            if(oldval==2){
+                this.tempinfo = this.tempinfotml;
             }
         }
     },
@@ -368,14 +389,6 @@ export default {
                 })
             },
         remove (index) {
-<<<<<<< HEAD
-            this.data6.splice(index, 1);
-        },
-        request(){
-            this.$http.get("tp5/public/index.php/admin/test/test?a=1&b=2").then(response=>{
-                console.log(response);
-            })
-=======
             this.deleteit = true;
             this.curindex = index;
         },
@@ -454,7 +467,6 @@ export default {
                 default:
                     break;
             }
->>>>>>> f646e15f80e08f41afb7db4272c8bb9b7e4a4b37
         }
     },
     /* event listeners code in mounted function*/

@@ -22,8 +22,8 @@ import global_ from '@/utils/global'  //全局常量
 // import 'bootstrap/dist/css/bootstrap.min.css'
 // import 'bootstrap/dist/js/bootstrap.min.js'
 // import '@/assets/js/public.js'
-// import iView from 'iview';
-// Vue.use(iView);   不使用按需加载时
+import iView from 'iview';
+Vue.use(iView);   //不使用按需加载时
 
 
 

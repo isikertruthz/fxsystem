@@ -368,14 +368,6 @@ export default {
                 })
             },
         remove (index) {
-<<<<<<< HEAD
-            this.data6.splice(index, 1);
-        },
-        request(){
-            this.$http.get("tp5/public/index.php/admin/test/test?a=1&b=2").then(response=>{
-                console.log(response);
-            })
-=======
             this.deleteit = true;
             this.curindex = index;
         },
@@ -454,7 +446,6 @@ export default {
                 default:
                     break;
             }
->>>>>>> f646e15f80e08f41afb7db4272c8bb9b7e4a4b37
         }
     },
     /* event listeners code in mounted function*/

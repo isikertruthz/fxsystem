@@ -31,6 +31,11 @@
                                 <Button type="default" size="small" @click="clickUpload()">选择图片</Button>
                             </div>
                             <div class="card-add-tabpane-div">
+                                <span class="card-add-span">公司官网</span>
+                                <!-- <Input v-model="empname" placeholder="请输入姓名..." size="large" class="card-add-input" /> -->
+                                <Input type="text" v-model="tempinfo.公司官网" placeholder="格式 http://xxxx.xx或https://xxxx.xx" clearable size="default" class="card-add-input" />
+                            </div>
+                            <div class="card-add-tabpane-div">
                                 <span class="card-add-span" style="float:left;padding-top:5px;">公司简介：</span>
                                 <Input type="textarea" v-model="tempinfo.comintro" placeholder="个人简介" clearable class="card-add-input" />
                             </div>
@@ -51,6 +56,10 @@
                                 <img src="../../assets/images/image.png" class="card-add-img-def" v-if="tempinfo.logopath==''">
                                 <img :src="'http://localhost/upload/' + list[curindex].logopath" class="card-add-img-upl" v-else>
                                 <Button type="default" size="small" @click="clickUpload()">选择图片</Button>
+                            </div>
+                            <div class="card-add-tabpane-div">
+                                <span class="card-add-span">公司官网：</span>
+                                <Input type="text" v-model="tempinfo.comwebsite" placeholder="格式 http://xxxxx.xx" clearable size="default" class="card-add-input" />
                             </div>
                             <div class="card-add-tabpane-div">
                                 <span class="card-add-span" style="float:left;padding-top:5px;">公司简介：</span>
@@ -158,6 +167,11 @@ export default {
                     {
                         title: '公司简介',
                         key: 'comintro',
+                        align: "center"
+                    },
+                    {
+                        title: '公司官网',
+                        key: 'comwebsite',
                         align: "center"
                     },
                     {

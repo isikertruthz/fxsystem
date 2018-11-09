@@ -46,7 +46,7 @@
                                 <span style="width:80px;display:inline-block;text-align:right;">头像：</span>
                                 <Input v-model="value14" placeholder="请输入姓名..." clearable size="large" style="width: 200px" />
                             </div>
-                            <Button type="success" size="small"> 提交 </Button>
+                            <Button type="success" size="small" @click="request()"> 提交 </Button>
 
                         </TabPane>
                         <TabPane label="修改信息" disable>    <Button>Default</Button>
@@ -233,6 +233,11 @@ export default {
             },
         remove (index) {
             this.data6.splice(index, 1);
+        },
+        request(){
+            this.$http.get("tp5/public/index.php/admin/test/test?a=1&b=2").then(response=>{
+                console.log(response);
+            })
         }
     },
     /* event listeners code in mounted function*/

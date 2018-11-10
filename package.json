@@ -14,7 +14,9 @@
   "dependencies": {
     "ajv": "^6.0.0",
     "axios": "^0.18.0",
+    "eslint": "^5.9.0",
     "iview": "^3.1.4",
+    "iview-loader": "^1.2.2",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.3",
     "vue": "^2.5.2",

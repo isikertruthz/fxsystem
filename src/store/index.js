@@ -5,7 +5,7 @@ import status from '@/store/modules/status'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-	modules:{
-		status
-	}
+    modules: {
+        status
+    }
 })

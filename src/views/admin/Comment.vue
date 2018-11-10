@@ -2,12 +2,13 @@
     <div>
         <!-- adjust 适应框架宽度 -->
         <div class="comm-view" :class="commLay==240?messagebarVisit?'pad-lefta pad-right':'pad-lefta':commLay==130?messagebarVisit?'pad-leftb pad-right':'pad-leftb':commLay==170?messagebarVisit?'pad-leftc pad-right':'pad-leftc':commLay==60?messagebarVisit?'pad-leftd pad-right':'pad-leftd':''">
-            <div class="dp-location"> <!-- location -->
+            <div class="dp-location">
+                <!-- location -->
                 <span class="loc-bor">当前位置：
                     <label class="page-location">{{pageLoction}}管理</label>
                 </span>
             </div> <!-- location End -->
-            <div class="content main_content"> 
+            <div class="content main_content">
                 <div class="content-top page-content">
                     <form action="" method="get" class="form-horizontal form-search" role="form">
                         <div class="page-toolbar">
@@ -17,7 +18,7 @@
                                     添加虚拟评论
                                 </a>
                             </span>
-                            
+
                             <div class="input-group col-xs-6 col-sm-5 pull-right">
                                 <input type="text" class="jeinput icons top_input" id="date_3" placeholder="YYYY-MM-DD hh:mm:ss" />
                                 <span class="input-group-select">
@@ -46,8 +47,7 @@
                                         </option>
                                     </select>
                                 </span>
-                                <input type="text" class="input-sm form-control" name='keyword' value=""
-                                placeholder="ID/名称/编号/条码/商户名称">
+                                <input type="text" class="input-sm form-control" name='keyword' value="" placeholder="ID/名称/编号/条码/商户名称">
                                 <span class="input-group-btn">
                                     <button class="btn btn-primary" type="submit">
                                         搜索
@@ -108,24 +108,24 @@
                                         </td>
                                         <td><span class="span_1a1a1a">999</span></td>
                                         <td>
-                                            <img class="table_img" src="../../assets/images/pro.jpg"/>
-                                            <p class="table_p">白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白<br/>柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚</p>
+                                            <img class="table_img" src="../../assets/images/pro.jpg" />
+                                            <p class="table_p">白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白<br />柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚</p>
                                         </td>
                                         <td>
-                                            <img class="user_img" src="../../assets/images/pro.jpg"/>
+                                            <img class="user_img" src="../../assets/images/pro.jpg" />
                                             <span class="span_1a1a1a">用户</span>
                                         </td>
                                         <td><span class="span_f5812b">★★★★★</span></td>
                                         <td><span class="span_666">追加了评论</span></td>
                                         <td>
-                                            <span class="span_ea4335">未首次回复</span> <br/> 
+                                            <span class="span_ea4335">未首次回复</span> <br />
                                             <span class="span_e88740">未追加回复</span>
                                         </td>
                                         <td>
-                                            <span class="span_34a853">首次评价已通过</span> <br/> 
+                                            <span class="span_34a853">首次评价已通过</span> <br />
                                             <span class="span_e88740">追加评价审核中</span>
                                         </td>
-                                        <td><span class="span_999">2018.10.29 <br/> 09:55:03</span></td>
+                                        <td><span class="span_999">2018.10.29 <br /> 09:55:03</span></td>
                                         <td class="td">
                                             <a class="btn btn-op btn-operation btn_34a853" href="javascript:;">
                                                 <i class="fa fa-pencil i_20"></i>
@@ -141,24 +141,24 @@
                                         </td>
                                         <td><span class="span_1a1a1a">999</span></td>
                                         <td>
-                                            <img class="table_img" src="../../assets/images//pro.jpg"/>
-                                            <p class="table_p">白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白<br/>柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚</p>
+                                            <img class="table_img" src="../../assets/images//pro.jpg" />
+                                            <p class="table_p">白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白<br />柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚</p>
                                         </td>
                                         <td>
-                                            <img class="user_img" src="../../assets/images//pro.jpg"/>
+                                            <img class="user_img" src="../../assets/images//pro.jpg" />
                                             <span class="span_1a1a1a">用户</span>
                                         </td>
                                         <td><span class="span_f5812b">★★★★★</span></td>
                                         <td><span class="span_666">追加了评论</span></td>
                                         <td>
-                                            <span class="span_ea4335">未首次回复</span> <br/> 
+                                            <span class="span_ea4335">未首次回复</span> <br />
                                             <span class="span_e88740">未追加回复</span>
                                         </td>
                                         <td>
-                                            <span class="span_34a853">首次评价已通过</span> <br/> 
+                                            <span class="span_34a853">首次评价已通过</span> <br />
                                             <span class="span_e88740">追加评价审核中</span>
                                         </td>
-                                        <td><span class="span_999">2018.10.29 <br/> 09:55:03</span></td>
+                                        <td><span class="span_999">2018.10.29 <br /> 09:55:03</span></td>
                                         <td class="td">
                                             <a class="btn btn-op btn-operation btn_34a853" href="javascript:;">
                                                 <i class="fa fa-pencil i_20"></i>
@@ -174,24 +174,24 @@
                                         </td>
                                         <td><span class="span_1a1a1a">999</span></td>
                                         <td>
-                                            <img class="table_img" src="../../assets/images/pro.jpg"/>
-                                            <p class="table_p">白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白<br/>柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚</p>
+                                            <img class="table_img" src="../../assets/images/pro.jpg" />
+                                            <p class="table_p">白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白<br />柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚白柚</p>
                                         </td>
                                         <td>
-                                            <img class="user_img" src="../../assets/images/pro.jpg"/>
+                                            <img class="user_img" src="../../assets/images/pro.jpg" />
                                             <span class="span_1a1a1a">用户</span>
                                         </td>
                                         <td><span class="span_f5812b">★★★★★</span></td>
                                         <td><span class="span_666">追加了评论</span></td>
                                         <td>
-                                            <span class="span_ea4335">未首次回复</span> <br/> 
+                                            <span class="span_ea4335">未首次回复</span> <br />
                                             <span class="span_e88740">未追加回复</span>
                                         </td>
                                         <td>
-                                            <span class="span_34a853">首次评价已通过</span> <br/> 
+                                            <span class="span_34a853">首次评价已通过</span> <br />
                                             <span class="span_e88740">追加评价审核中</span>
                                         </td>
-                                        <td><span class="span_999">2018.10.29 <br/> 09:55:03</span></td>
+                                        <td><span class="span_999">2018.10.29 <br /> 09:55:03</span></td>
                                         <td class="td">
                                             <a class="btn btn-op btn-operation btn_34a853" href="javascript:;">
                                                 <i class="fa fa-pencil i_20"></i>
@@ -232,19 +232,19 @@ export default {
     },
     computed: {
         ...mapState({
-            pageLoction : state => state.status.pageLoction,
-            messagebarVisit : state => state.status.messagebarVisit,
-            sidebarmax : state => state.status.sidebarmax,
-            subSidebarVisit : state => state.status.subSidebarVisit
+            pageLoction: state => state.status.pageLoction,
+            messagebarVisit: state => state.status.messagebarVisit,
+            sidebarmax: state => state.status.sidebarmax,
+            subSidebarVisit: state => state.status.subSidebarVisit
         }),
-        commLay(){
-            if(this.sidebarmax && this.subSidebarVisit){
+        commLay() {
+            if (this.sidebarmax && this.subSidebarVisit) {
                 return 240
-            }else if(this.sidebarmax && !this.subSidebarVisit){
+            } else if (this.sidebarmax && !this.subSidebarVisit) {
                 return 130
-            }else if(!this.sidebarmax && this.subSidebarVisit){
+            } else if (!this.sidebarmax && this.subSidebarVisit) {
                 return 170
-            }else{
+            } else {
                 return 60
             }
         }
@@ -252,8 +252,8 @@ export default {
     watch: {},
     methods: {},
     /* event listeners code in mounted function*/
-    mounted: function(){},
-    destroyed: function(){}
+    mounted: function () { },
+    destroyed: function () { }
 }
 </script>
 

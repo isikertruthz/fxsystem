@@ -8,6 +8,7 @@ body {
     padding: 0;
     font-size: 13px;
     background-color: #F5F7F9;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 ul,
@@ -49,10 +50,11 @@ a {
 }
 
 .loc-bor {
-    border-left: 3px solid #00AEFF;
+    border-left: 3px solid #2d8cf0;
     padding-left: 6px;
     line-height: 55px;
     color: #333;
+    font-size:14.2px;
 }
 
 .content {
@@ -421,9 +423,9 @@ a {
  */
 
 .page-location {
-    color: #44abf7;
+    color: #2d8cf0;
     margin-left: 5px;
-    font-size: 11px;
+    font-size: 12.4px;
 }
 
 ::-webkit-scrollbar {
@@ -633,7 +635,7 @@ a {
 
 .subactive {
     display: inline-block;
-    color: #00AEFF;
+    color: #2d8cf0;
     background-color: #EDF6FF;
     /* background-color:#f5f7f9; */
     width: 100%;

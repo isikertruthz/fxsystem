@@ -1,39 +1,39 @@
 <template>
-  <div>
-    <script id="editor" type="text/plain"></script>
-  </div>
+    <div>
+        <script id="editor" type="text/plain"></script>
+    </div>
 </template>
 <script>
-  /* Ueditor 富文本编辑器插件 */
-  export default {
+/* Ueditor 富文本编辑器插件 */
+export default {
     // name: 'UE',
-    data () {
-      return {
-        editor: null
-      }
+    data() {
+        return {
+            editor: null
+        }
     },
     props: {
-      defaultMsg: {
-        type: String
-      },
-      config: {
-        type: Object
-      }
+        defaultMsg: {
+            type: String
+        },
+        config: {
+            type: Object
+        }
     },
     mounted() {
-      const _this = this;
-      this.editor = UE.getEditor('editor', this.config); // 初始化UE
-      this.editor.addListener("ready", function () {
-        _this.editor.setContent(_this.defaultMsg); // 确保UE加载完成后，放入内容。
-      });
+        const _this = this;
+        this.editor = UE.getEditor('editor', this.config); // 初始化UE
+        this.editor.addListener("ready", function () {
+            _this.editor.setContent(_this.defaultMsg); // 确保UE加载完成后，放入内容。
+        });
     },
     methods: {
-      getUEContent() { // 获取内容方法
-        return this.editor.getContent()
-      }
+        getUEContent() { // 获取内容方法
+            return this.editor.getContent()
+        }
     },
     destroyed() {
-      this.editor.destroy();
+        this.editor.destroy();
     }
-  }
+}
 </script>

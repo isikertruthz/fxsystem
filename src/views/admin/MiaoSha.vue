@@ -2,12 +2,13 @@
     <div>
         <!-- adjust 适应框架宽度 -->
         <div class="comm-view" :class="commLay==240?messagebarVisit?'pad-lefta pad-right':'pad-lefta':commLay==130?messagebarVisit?'pad-leftb pad-right':'pad-leftb':commLay==170?messagebarVisit?'pad-leftc pad-right':'pad-leftc':commLay==60?messagebarVisit?'pad-leftd pad-right':'pad-leftd':''">
-            <div class="dp-location"> <!-- location -->
+            <div class="dp-location">
+                <!-- location -->
                 <span class="loc-bor">当前位置：
                     <label class="page-location">{{pageLoction}}管理</label>
                 </span>
             </div> <!-- location End -->
-            <div class="content main_content"> 
+            <div class="content main_content">
                 <div class="content-top page-content">
                     <form action="" method="get" class="form-horizontal form-search" role="form">
                         <ul class="nav nav-tabs">
@@ -61,12 +62,12 @@
                                             <input type="file" id="file" class="form_file" />
                                             <label for="file" class="form_file_label"></label>
                                         </div> -->
-                                        <div class="input-file-container input-group">  
+                                        <div class="input-file-container input-group">
                                             <input class="input-file" id="my-file" type="file">
                                             <label tabindex="0" for="my-file" class="input-file-trigger form_file_label"></label>
-                                            </div>
-                                            <p class="file-return"></p>
                                         </div>
+                                        <p class="file-return"></p>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-1 control-label must"><i class="i_eb6060">*</i>秒杀价：</label>
@@ -177,36 +178,36 @@
  * Coded By Raccoon
  * on 2018.10.19
  */
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
 
 export default {
     data() {
-        return {}
+        return {};
     },
     computed: {
         ...mapState({
-            pageLoction : state => state.status.pageLoction,
-            messagebarVisit : state => state.status.messagebarVisit,
-            sidebarmax : state => state.status.sidebarmax,
-            subSidebarVisit : state => state.status.subSidebarVisit
+            pageLoction: state => state.status.pageLoction,
+            messagebarVisit: state => state.status.messagebarVisit,
+            sidebarmax: state => state.status.sidebarmax,
+            subSidebarVisit: state => state.status.subSidebarVisit
         }),
-        commLay(){
-            if(this.sidebarmax && this.subSidebarVisit){
-                return 240
-            }else if(this.sidebarmax && !this.subSidebarVisit){
-                return 130
-            }else if(!this.sidebarmax && this.subSidebarVisit){
-                return 170
-            }else{
-                return 60
+        commLay() {
+            if (this.sidebarmax && this.subSidebarVisit) {
+                return 240;
+            } else if (this.sidebarmax && !this.subSidebarVisit) {
+                return 130;
+            } else if (!this.sidebarmax && this.subSidebarVisit) {
+                return 170;
+            } else {
+                return 60;
             }
         }
     },
     watch: {},
     methods: {},
     /* event listeners code in mounted function*/
-    mounted: function(){},
-    destroyed: function(){}
-}
+    mounted: function () { },
+    destroyed: function () { }
+};
 </script>
 

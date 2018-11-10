@@ -2,11 +2,11 @@
     width:100px;
     display:inline-block;
     text-align:right;
-    font-weight:bold;
+    /* font-weight:bold; */
 }
 
 .card-add-input{
-    width: 350px;
+    width: 450px;
     margin-left: 15px;
 }
 
@@ -17,6 +17,7 @@
 
 .card-add-tabpane .card-add-tabpane-div{
     margin:15px 0px;
+    position: relative;
 }
 
 .card-add-img-def{

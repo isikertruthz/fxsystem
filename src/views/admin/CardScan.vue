@@ -15,62 +15,8 @@
             <div class="content">
                 <div class="content-top">
                     <Tabs :animated="false" style="padding:10px 20px 10px 20px;" v-model="curtab">
-                        <TabPane label="员工信息">
+                        <TabPane label="浏览信息">
                             <Table :columns="columns7" :data="list"></Table>
-                        </TabPane>
-                        <TabPane label="添加员工" class="card-add-tabpane" :disabled="secdisabled">
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">所属公司：</span>
-                                <Select v-model="tempinfo.comid" class="card-add-input" @change="tempinfo.comid = $event.target.value">
-                                    <Option value="0">请选择</Option>
-                                    <Option value="1">企泰科技</Option>
-                                </Select>
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">姓名：</span>
-                                <!-- <Input v-model="empname" placeholder="请输入姓名..." size="large" class="card-add-input" /> -->
-                                <Input type="text" v-model="tempinfo.empname" placeholder="请输入姓名..." clearable size="default" class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">职位：</span>
-                                <Input type="text" v-model="tempinfo.emppost" placeholder="请输入职位..." clearable class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">手机：</span>
-                                <Input type="text" v-model="tempinfo.mobnum" placeholder="请输入手机..." clearable name="mobnum" class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">微信：</span>
-                                <Input type="text" v-model="tempinfo.wxnum" placeholder="请输入微信..." clearable class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">邮箱：</span>
-                                <Input type="text" v-model="tempinfo.email" placeholder="请输入邮箱..." clearable class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">座机：</span>
-                                <Input type="text" v-model="tempinfo.telphone" placeholder="请输入座机..." clearable class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span">地址：</span>
-                                <Input type="text" v-model="tempinfo.address" placeholder="请输入地址..." clearable class="card-add-input" />
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span" style="float:left;padding-top:5px;">头像：</span>
-                                <input id="perImage" type="file" name="file" style="width: 200px;display:none;" @change="fileUpload($event)" />
-                                <img src="../../assets/images/image.png" class="card-add-img-def" v-if="imgTmp==''">
-                                <img :src="imgTmp" class="card-add-img-upl" v-else>
-                                <Button type="default" size="small" @click="clickUpload()">选择图片</Button>
-                            </div>
-                            <div class="card-add-tabpane-div">
-                                <span class="card-add-span" style="float:left;padding-top:5px;">个人简介：</span>
-                                <Input type="textarea" v-model="tempinfo.intro" placeholder="个人简介" clearable class="card-add-input" />
-                            </div>
-                            <div style="width:570px;text-align:right;">
-                                <Button type="info" size="default" @click="changeTab()">返回</Button>
-                                <Button type="success" @click="request('10001')">提交</Button>
-                            </div>
-
                         </TabPane>
                         <TabPane label="修改信息" :disabled="enchange" class="card-add-tabpane">
                             <div class="card-add-tabpane-div">
@@ -205,48 +151,53 @@ export default {
                     // }
                 },
                 {
-                    title: "姓名",
-                    key: "empname",
+                    title: "openid",
+                    key: "openid",
                     align: "center"
                 },
                 {
-                    title: "职位",
-                    key: "emppost",
+                    title: "empid",
+                    key: "empid",
                     align: "center"
                 },
                 {
-                    title: "手机",
-                    key: "mobnum",
+                    title: "收藏",
+                    key: "iscoll",
                     align: "center"
                 },
                 {
-                    title: "微信",
-                    key: "wxnum",
+                    title: "点赞",
+                    key: "islike",
                     align: "center"
                 },
                 {
-                    title: "邮箱",
-                    key: "email",
+                    title: "浏览次数",
+                    key: "scanamount",
                     align: "center"
                 },
                 {
-                    title: "座机",
-                    key: "telphone",
+                    title: "来源",
+                    key: "from",
                     align: "center"
                 },
                 {
-                    title: "地址",
-                    key: "address",
+                    title: "添加日期",
+                    key: "createdate",
                     align: "center"
                 },
                 {
-                    title: "头像",
-                    key: "imgpath",
+                    title: "最近浏览",
+                    key: "lastscandate",
                     align: "center"
                 },
                 {
-                    title: "个人简介",
-                    key: "intro",
+                    title: "最近收藏",
+                    key: "lastcolldate",
+                    align: "center"
+                },
+                {
+                    title: "最近点赞",
+                    key: "lastlikedate",
                     align: "center"
                 },
                 {
@@ -317,30 +268,8 @@ export default {
             list: [],
             imgTmp: "",
             tempinfo: {
-                comid: "",
-                empname: "",
-                emppost: "",
-                mobnum: "",
-                wxnum: "",
-                email: "",
-                telphone: "",
-                address: "",
-                imgpath: "",
-                intro: "",
-                photoimage: ""
             },
             tempinfotml: {
-                comid: "",
-                empname: "",
-                emppost: "",
-                mobnum: "",
-                wxnum: "",
-                email: "",
-                telphone: "",
-                address: "",
-                imgpath: "",
-                intro: "",
-                photoimage: ""
             }
         };
     },
@@ -435,7 +364,7 @@ export default {
                 });
         },
         request(ywtype) {
-            let prefixurl = "tp5/public/index.php/admin/card/";
+            let prefixurl = "tp5/public/index.php/admin/cardscan/";
             let url = "";
             switch (ywtype) {
                 //添加

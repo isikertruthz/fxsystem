@@ -74,6 +74,58 @@
                         <TabPane label="动态信息" class="card-add-tabpane">
                         </TabPane>
                         <TabPane label="发表动态" class="card-add-tabpane">
+                            <div class="card-add-tabpane-div">
+                                <span class="card-add-span">选择公司：</span>
+                                <Select v-model="dyninfo.dyncompay" class="card-add-input">
+                                    <Option value="0">请选择</Option>
+                                    <Option v-for="item in comlist" :value="item.id" :key="item.comid">{{item.comname}}</Option>
+                                </Select>
+                            </div>
+                            <div class="card-add-tabpane-div">
+                                <span class="card-add-span">上传图片：</span>
+                                <div class="demo-upload-list card-add-input" v-for="item in uploadList">
+                                    <template v-if="item.status === 'finished'">
+                                        <img :src="item.url">
+                                        <div class="demo-upload-list-cover">
+                                            <Icon type="ios-eye-outline" @click.native="handleView(item.name)"></Icon>
+                                            <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
+                                        </div>
+                                    </template>
+                                    <template v-else>
+                                        <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
+                                    </template>
+                                </div>
+                                <Upload
+                                    ref="upload"
+                                    :show-upload-list="false"
+                                    :default-file-list="defaultList"
+                                    :on-success="handleSuccess"
+                                    :format="['jpg','jpeg','png']"
+                                    :max-size="2048"
+                                    :on-format-error="handleFormatError"
+                                    :on-exceeded-size="handleMaxSize"
+                                    :before-upload="handleBeforeUpload"
+                                    multiple
+                                    type="drag"
+                                    action="//jsonplaceholder.typicode.com/posts/"
+                                    style="display: inline-block;width:58px;">
+                                    <div style="width: 58px;height:58px;line-height: 58px;">
+                                        <Icon type="ios-camera" size="20"></Icon>
+                                    </div>
+                                </Upload>
+                                <Modal title="View Image" v-model="visible">
+                                    <img :src="'https://o5wwk8baw.qnssl.com/' + imgName + '/large'" v-if="visible" style="width: 100%">
+                                </Modal>
+                            </div>
+                            <div class="card-add-tabpane-div">
+                                <span class="card-add-span" style="float:left;padding-top:5px;">动态内容：</span>
+                                <Input type="textarea" v-model="dyninfo.content" placeholder="请输入动态内容..." clearable class="card-add-input" :rows='6' />
+                            </div>
+                            <div style="width:570px;text-align:right;">
+                                <Button type="info" size="default" @click="changeTab()">返回</Button>
+                                <Button type="success" @click="request('')">修改</Button>
+                            </div>
+
                         </TabPane>
                         <TabPane label="配置" class="card-add-tabpane">
                             <div class="card-add-tabpane-div">
@@ -121,15 +173,31 @@
  * on 2018.10.19
  */
 import { mapState } from 'vuex';
-import { Button, Tabs, TabPane, Table, Modal, Message, Input, Select, Option, Avatar } from 'iview';
+import { Button, Tabs, TabPane, Table, Modal, Message, Input, Select, Option, Avatar,Upload, } from 'iview';
 import Vue from 'vue'
 Vue.prototype.$Modal = Modal
 Vue.prototype.$Message = Message
 
 export default {
-    components: { Button, Tabs, TabPane, Table, Modal, Message, Input, Select, Option, Avatar },
+    components: { Button, Tabs, TabPane, Table, Modal, Message, Input, Select, Option, Avatar,Upload },
     data() {
         return {
+            defaultList: [
+                {
+                    'name': 'a42bdcc1178e62b4694c830f028db5c0',
+                    'url': 'https://o5wwk8baw.qnssl.com/a42bdcc1178e62b4694c830f028db5c0/avatar'
+                },
+                {
+                    'name': 'bc7521e033abdd1e92222d733590f104',
+                    'url': 'https://o5wwk8baw.qnssl.com/bc7521e033abdd1e92222d733590f104/avatar'
+                }
+            ],
+            imgName: '',
+            visible: false,
+            uploadList: [],
+
+            dyninfo:{            },
+            comlist:[],
             istdt: 0,
             istgw: 0,
             curindex: -1,
@@ -412,16 +480,98 @@ export default {
                         this.$Message.success('修改失败');
                     });
                     break;
+                case '10005':
+                    url = prefixurl + 'getcominfo';
+                    this.$http.get(url).then(response =>{
+                        console.log(this.comlist)
+                        this.comlist = response.data.data
+                    })
+                    break;
                 default:
                     break;
             }
-        }
+        },
+            handleView (name) {
+                this.imgName = name;
+                this.visible = true;
+            },
+            handleRemove (file) {
+                const fileList = this.$refs.upload.fileList;
+                this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
+            },
+            handleSuccess (res, file) {
+                file.url = 'https://o5wwk8baw.qnssl.com/7eb99afb9d5f317c912f08b5212fd69a/avatar';
+                file.name = '7eb99afb9d5f317c912f08b5212fd69a';
+            },
+            handleFormatError (file) {
+                this.$Notice.warning({
+                    title: 'The file format is incorrect',
+                    desc: 'File format of ' + file.name + ' is incorrect, please select jpg or png.'
+                });
+            },
+            handleMaxSize (file) {
+                this.$Notice.warning({
+                    title: 'Exceeding file size limit',
+                    desc: 'File  ' + file.name + ' is too large, no more than 2M.'
+                });
+            },
+            handleBeforeUpload () {
+                const check = this.uploadList.length < 5;
+                if (!check) {
+                    this.$Notice.warning({
+                        title: 'Up to five pictures can be uploaded.'
+                    });
+                }
+                return check;
+            }
     },
     /* event listeners code in mounted function*/
     mounted: function () {
         this.request('10002');
+        this.request('10005');
+
+        //
+        this.uploadList = this.$refs.upload.fileList;
     },
     destroyed: function () { }
 }
 </script>
 
+<style>
+    .demo-upload-list{
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        line-height: 60px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        overflow: hidden;
+        background: #fff;
+        position: relative;
+        box-shadow: 0 1px 1px rgba(0,0,0,.2);
+        margin-right: 4px;
+    }
+    .demo-upload-list img{
+        width: 100%;
+        height: 100%;
+    }
+    .demo-upload-list-cover{
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,.6);
+    }
+    .demo-upload-list:hover .demo-upload-list-cover{
+        display: block;
+    }
+    .demo-upload-list-cover i{
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        margin: 0 2px;
+    }
+</style>

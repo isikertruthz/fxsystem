@@ -26,7 +26,7 @@
                             </div>
                             <div class="card-add-tabpane-div">
                                 <span class="card-add-span">用户名：</span>
-                                <Input type="text" v-model="tempinfo.nickname" placeholder="请输入用户名..." clearable class="card-add-input" />
+                                <Input type="text" v-model="tempinfo.nickName" placeholder="请输入用户名..." clearable class="card-add-input" />
                             </div>
                             <div class="card-add-tabpane-div">
                                 <span class="card-add-span">性别：</span>
@@ -145,7 +145,7 @@ export default {
                 },
                 {
                     title: "用户名",
-                    key: "nickname",
+                    key: "nickName",
                     align: "center"
                 },
                 {
@@ -166,10 +166,10 @@ export default {
                                         shape: "circle",
                                         size: "large",
                                         src:
-                                            this.list[params.index].avatarurl.indexOf("http://") > 0
-                                                ? this.list[params.index].avatarurl
+                                            this.list[params.index].avatarUrl.indexOf("https://") >= 0
+                                                ? this.list[params.index].avatarUrl
                                                 : "http://localhost/upload/" +
-                                                this.list[params.index].avatarurl
+                                                this.list[params.index].avatarUrl
                                     }
                                 },
                                 ""
@@ -275,10 +275,10 @@ export default {
             list: [],
             imgTmp: "",
             tempinfo: {
-                avatarurl: ""
+                avatarUrl: ""
             },
             tempinfotml: {
-                avatarurl: ""
+                avatarUrl: ""
             }
         };
     },
@@ -302,9 +302,9 @@ export default {
         },
         updimg() {
             return this.imgTmp == ""
-                ? this.tempinfo.avatarurl.indexOf("http") > 0
-                    ? this.tempinfo.avatarurl
-                    : "http://localhost/upload/" + this.tempinfo.avatarurl
+                ? this.tempinfo.avatarUrl.indexOf("http") >= 0
+                    ? this.tempinfo.avatarUrl
+                    : "http://localhost/upload/" + this.tempinfo.avatarUrl
                 : this.imgTmp;
         }
     },
@@ -336,7 +336,7 @@ export default {
             this.$Modal.info({
                 title: "用户信息",
                 content: `openid：${this.list[index].openid}<br>
-                    用户名：${this.list[index].nickname}<br>
+                    用户名：${this.list[index].nickName}<br>
                     性别：${this.list[index].gender}<br>
                     手机：${this.list[index].mobnum}<br>
                     省会：${this.list[index].province}<br>

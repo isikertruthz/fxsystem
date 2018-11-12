@@ -83,11 +83,11 @@
                             </div>
                             <div class="card-add-tabpane-div">
                                 <span class="card-add-span">上传图片：</span>
-                                <div class="demo-upload-list card-add-input" v-for="item in uploadList">
+                                <div class="demo-upload-list card-add-input" v-for="item in uploadList" >
                                     <template v-if="item.status === 'finished'">
                                         <img :src="item.url">
                                         <div class="demo-upload-list-cover">
-                                            <Icon type="ios-eye-outline" @click.native="handleView(item.name)"></Icon>
+                                            <Icon type="ios-eye-outline" @click.native="handleView(item.url)"></Icon>
                                             <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
                                         </div>
                                     </template>
@@ -107,14 +107,14 @@
                                     :before-upload="handleBeforeUpload"
                                     multiple
                                     type="drag"
-                                    action="//jsonplaceholder.typicode.com/posts/"
+                                    action="apis/api/main.php?ywtype=10002"
                                     style="display: inline-block;width:58px;">
                                     <div style="width: 58px;height:58px;line-height: 58px;">
                                         <Icon type="ios-camera" size="20"></Icon>
                                     </div>
                                 </Upload>
-                                <Modal title="View Image" v-model="visible">
-                                    <img :src="'https://o5wwk8baw.qnssl.com/' + imgName + '/large'" v-if="visible" style="width: 100%">
+                                <Modal title="图片预览" v-model="visible">
+                                    <img :src="imgName" v-if="visible" style="width: 100%">
                                 </Modal>
                             </div>
                             <div class="card-add-tabpane-div">
@@ -123,7 +123,7 @@
                             </div>
                             <div style="width:570px;text-align:right;">
                                 <Button type="info" size="default" @click="changeTab()">返回</Button>
-                                <Button type="success" @click="request('')">修改</Button>
+                                <Button type="success" @click="request('10006')">提交</Button>
                             </div>
 
                         </TabPane>
@@ -183,20 +183,20 @@ export default {
     data() {
         return {
             defaultList: [
-                {
-                    'name': 'a42bdcc1178e62b4694c830f028db5c0',
-                    'url': 'https://o5wwk8baw.qnssl.com/a42bdcc1178e62b4694c830f028db5c0/avatar'
-                },
-                {
-                    'name': 'bc7521e033abdd1e92222d733590f104',
-                    'url': 'https://o5wwk8baw.qnssl.com/bc7521e033abdd1e92222d733590f104/avatar'
-                }
+                // {
+                //     'name': 'a42bdcc1178e62b4694c830f028db5c0',
+                //     'url': 'https://o5wwk8baw.qnssl.com/a42bdcc1178e62b4694c830f028db5c0/avatar'
+                // },
+                // {
+                //     'name': 'bc7521e033abdd1e92222d733590f104',
+                //     'url': 'https://o5wwk8baw.qnssl.com/bc7521e033abdd1e92222d733590f104/avatar'
+                // }
             ],
             imgName: '',
             visible: false,
             uploadList: [],
 
-            dyninfo:{            },
+            dyninfo:{ imgs:[],           },
             comlist:[],
             istdt: 0,
             istgw: 0,
@@ -487,6 +487,16 @@ export default {
                         this.comlist = response.data.data
                     })
                     break;
+                case '10006':
+                    prefixurl = 'tp5/public/index.php/admin/carddyn/';
+                    url = prefixurl + 'AddState';
+                    data = {
+                        
+                    }
+                    this.$http.put(url,data).then(response =>{
+                        console.log(this.comlist)
+                    })
+                    break;
                 default:
                     break;
             }
@@ -500,8 +510,9 @@ export default {
                 this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
             },
             handleSuccess (res, file) {
-                file.url = 'https://o5wwk8baw.qnssl.com/7eb99afb9d5f317c912f08b5212fd69a/avatar';
-                file.name = '7eb99afb9d5f317c912f08b5212fd69a';
+                console.log(res);
+                file.url = 'http://localhost/upload/'+ res;
+                file.name = res;
             },
             handleFormatError (file) {
                 this.$Notice.warning({
@@ -516,7 +527,7 @@ export default {
                 });
             },
             handleBeforeUpload () {
-                const check = this.uploadList.length < 5;
+                const check = this.uploadList.length < 6;
                 if (!check) {
                     this.$Notice.warning({
                         title: 'Up to five pictures can be uploaded.'

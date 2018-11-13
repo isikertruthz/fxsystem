@@ -76,10 +76,10 @@
                         <TabPane label="发表动态" class="card-add-tabpane">
                             <div class="card-add-tabpane-div">
                                 <span class="card-add-span">选择公司：</span>
-                                <Select v-model="dyninfo.dyncompay" class="card-add-input">
+                                <Select v-model="dyninfo.comid" class="card-add-input">{{dyninfo.empid}}
                                     <Option value="0">请选择</Option>
                                     <Option v-for="item in comlist" :value="item.id" :key="item.comid">{{item.comname}}</Option>
-                                </Select>
+                                </Select>{{dyninfo.comid}}
                             </div>
                             <div class="card-add-tabpane-div">
                                 <span class="card-add-span">上传图片：</span>
@@ -196,7 +196,6 @@ export default {
             visible: false,
             uploadList: [],
 
-            dyninfo:{ imgs:[],           },
             comlist:[],
             istdt: 0,
             istgw: 0,
@@ -344,8 +343,9 @@ export default {
                 logopath: '',
                 updatedate: '',
                 comintro: '',
+            },
+            dyninfo:{
             }
-
         }
     },
     computed: {
@@ -490,8 +490,17 @@ export default {
                 case '10006':
                     prefixurl = 'tp5/public/index.php/admin/carddyn/';
                     url = prefixurl + 'AddState';
+                    let images= new Array();
+                    this.uploadList.forEach(e=>{
+                        images.push(e.name);
+                    })
+                    console.log(this.dyninfo.comid);
                     data = {
-                        
+                        comid : this.dyninfo.comid,
+                        empid : 0,
+                        content : this.dyninfo.content,
+                        images : images
+
                     }
                     this.$http.put(url,data).then(response =>{
                         console.log(this.comlist)

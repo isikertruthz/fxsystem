@@ -11,28 +11,28 @@ module.exports = {
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         proxyTable: {
-            '/apis': {
-                target: 'http://localhost/',
-                secure: false,
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/apis': ''
-                }
-            }
-            // '/apis':{
-            //     target :'https://www.entertry.com',
-            //     secure :true,
-            //     changeOrigin:true,
-            //     pathRewrite:{
-            //         '^/apis':''
+            // '/apis': {
+            //     target: 'http://localhost/',
+            //     secure: false,
+            //     changeOrigin: true,
+            //     pathRewrite: {
+            //         '^/apis': ''
             //     }
             // }
+            '/apis':{
+                target :'https://www.entertry.com',
+                secure :true,
+                changeOrigin:true,
+                pathRewrite:{
+                    '^/apis':''
+                }
+            }
         },
 
         // Various Dev Server settings
         host: 'localhost', // can be overwritten by process.env.HOST
         port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-        autoOpenBrowser: false,
+        autoOpenBrowser: true,
         errorOverlay: true,
         notifyOnErrors: true,
         poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
